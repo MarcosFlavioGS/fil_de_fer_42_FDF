@@ -6,7 +6,7 @@
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:30:38 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/11/22 19:52:08 by mflavio-         ###   ########.fr       */
+/*   Updated: 2022/11/22 20:42:10 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(void)
 	img.img = mlx_new_image(mlx, 1920, 1000);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	my_mlx_pixel_put(&img, 10, 5, 0x00FF0000);
 	mlx_put_image_to_window(mlx, janela, img.img, 0 , 0);
 	mlx_loop(mlx);
 }
