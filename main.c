@@ -15,7 +15,7 @@
 typedef struct s_data
 {
 	void	*img;
-	char	*addr;
+	char	*buffer;
 	int	bits_per_pixel;
 	int	line_length;
 	int	endian;
@@ -25,12 +25,13 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 	
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->buffer + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 
 int	main(void)
 {
+    int         color;
 	void		*mlx;
 	void		*janela;
 	t_data		img;
@@ -38,9 +39,16 @@ int	main(void)
 	mlx = mlx_init();
 	janela = mlx_new_window(mlx, 1920, 1080, "FDF");
 	img.img = mlx_new_image(mlx, 1920, 1000);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	my_mlx_pixel_put(&img, 10, 5, 0x00FF0000);
+	img.buffer = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+    img.line_length /= 4;
+    color = 0x00FF0000;
+    for(int y = 0; y < 1080; ++y)
+    for(int x = 0; x < 1920; ++x)
+    {
+        img.buffer[(y * img.line_length) + x] = color;
+    }
+    my_mlx_pixel_put(&img, 5, 5, color);
+	my_mlx_pixel_put(&img, 10, 5, color);
 	mlx_put_image_to_window(mlx, janela, img.img, 0 , 0);
 	mlx_loop(mlx);
 }
