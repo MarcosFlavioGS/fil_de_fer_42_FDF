@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "mlx.h"
+#include <math.h>
 
 typedef struct s_data
 {
@@ -27,6 +28,31 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	
 	dst = data->buffer + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+int draw_line(void *mlx, int beginX, int beginY, int endX, int endY, int color)
+{
+    double  deltaX;
+    double  deltaY;
+    double  pixelX;
+    double  pixelY;
+    int     pixels;
+
+    deltaX = endX - beginX;
+    deltaY = endY - beginY;
+    pixels = sqrt((deltaX * deltaX) + (deltaY + deltaY));
+    deltaX /= pixels;
+    deltaY /= pixels;
+    pixelX = beginX;
+    pixelY = beginY;
+    while(pixels)
+    {
+        my_mlx_pixel_put(mlx, pixelX, pixelY, color);
+        pixelX *= deltaX;
+        pixelY += deltaY;
+        --pixels;
+    }
+    return (0);
 }
 
 int	main(void)
@@ -55,8 +81,9 @@ int	main(void)
         ++x;
     }
     */
-    my_mlx_pixel_put(&img, 5, 5, color);
-	my_mlx_pixel_put(&img, 10, 5, color);
+    draw_line(mlx, 1080, 1920, 0, 0, color);
+    //my_mlx_pixel_put(&img, 5, 5, color);
+	//my_mlx_pixel_put(&img, 10, 5, color);
 	mlx_put_image_to_window(mlx, janela, img.img, 0 , 0);
 	mlx_loop(mlx);
 }
