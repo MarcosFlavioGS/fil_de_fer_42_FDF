@@ -30,7 +30,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int draw_line(void *mlx, int beginX, int beginY, int endX, int endY, int color)
+int draw_line(void *mlx, void *window, int beginX, int beginY, int endX, int endY, int color)
 {
     double  deltaX;
     double  deltaY;
@@ -47,7 +47,7 @@ int draw_line(void *mlx, int beginX, int beginY, int endX, int endY, int color)
     pixelY = beginY;
     while(pixels)
     {
-        my_mlx_pixel_put(mlx, pixelX, pixelY, color);
+        mlx_pixel_put(mlx, window, pixelX, pixelY, color);
         pixelX *= deltaX;
         pixelY += deltaY;
         --pixels;
@@ -61,13 +61,13 @@ int	main(void)
     //int         y;
     int         color;
 	void		*mlx;
-	void		*janela;
+	void		*window;
 	t_data		img;
 	
     color = 0x00FF0000;
 	mlx = mlx_init();
-	janela = mlx_new_window(mlx, 1920, 1080, "FDF");
-	img.img = mlx_new_image(mlx, 1920, 1000);
+	window = mlx_new_window(mlx, 1920, 1080, "FDF");
+	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.buffer = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
     /* Parte ainda em teste
     img.line_length /= 4;
@@ -81,9 +81,9 @@ int	main(void)
         ++x;
     }
     */
-    draw_line(mlx, 1080, 1920, 0, 0, color);
     //my_mlx_pixel_put(&img, 5, 5, color);
 	//my_mlx_pixel_put(&img, 10, 5, color);
-	mlx_put_image_to_window(mlx, janela, img.img, 0 , 0);
+    draw_line(mlx, window, 1080, 1920, 0, 0, color);
+	mlx_put_image_to_window(mlx, window, img.img, 0 , 0);
 	mlx_loop(mlx);
 }
