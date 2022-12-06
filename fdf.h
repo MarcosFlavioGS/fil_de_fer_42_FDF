@@ -2,6 +2,7 @@
 # define FDF_H
 
 # include <math.h>
+# include "libft/libft.h"
 # include "mlx.h"
 
 typedef struct s_data
