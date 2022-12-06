@@ -16,8 +16,7 @@ fclean: clean
 re: fclean all
 
 push:
-	read message
 	git add .
 	git status
-	git commit -m $message
+	git commit -m "$message"
 	git push
