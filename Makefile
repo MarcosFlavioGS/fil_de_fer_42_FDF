@@ -18,5 +18,5 @@ re: fclean all
 push:
 	git add .
 	git status
-	git commit -m "$message"
+	git commit -m $m
 	git push
