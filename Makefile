@@ -15,8 +15,10 @@ fclean: clean
 
 re: fclean all
 
+.ONESHELL:
 push:
+	read -p 'commit message: ' m
 	git add .
 	git status
-	git commit -m $m
+	git commit -m $$m
 	git push
