@@ -21,7 +21,8 @@ int	main(void)
     {
         ft_error("Usage: ./fdf <yourmap.fdf>");
     }
-    */
+    
     //matrix = read_map(*++argv);
+    */
     put_pixel();
 }
