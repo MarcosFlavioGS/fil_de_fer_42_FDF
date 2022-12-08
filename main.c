@@ -55,64 +55,55 @@ int main(int argc, char **argv)
     int fd;
     char *line;
     int **map;
+    int columns;
+    int rows;
     int i;
     int j;
-    int k;
 
-    // Get number of lines and columns in map file using ft_count_words
+    // Get number of lines in map file using get_next_line
     fd = open(argv[1], O_RDONLY);
+    rows = 0;
     line = get_next_line(fd);
-    i = 0;
     while (line)
     {
-        i++;
+        rows++;
         line = get_next_line(fd);
     }
     close(fd);
     // Get number of columns in map file using ft_count_words
     fd = open(argv[1], O_RDONLY);
     line = get_next_line(fd);
-    j = 0;
-    while (line)
-    {
-        j = ft_count_words(line, ' ');
-        line = get_next_line(fd);
-    }
+    columns = ft_count_words(line, ' ');
     close(fd);
-    
     // Allocate memory for matrix
-    
-    map = (int **)malloc(sizeof(int *) * i);
-
-    k = 0;
-    while (k < i)
-    {
-        map[k] = (int *)malloc(sizeof(int) * j);
-        k++;
-    }
-    // Read map into matrix
-    fd = open(argv[1], O_RDONLY);
-    line = get_next_line(fd);
+    map = (int **)malloc(sizeof(int *) * rows);
     i = 0;
-    while (line)
+    while (i < rows)
     {
+        map[i] = (int *)malloc(sizeof(int) * columns);
+        i++;
+    }
+    // Read map into matrix using ft_split and ft_atoi
+    fd = open(argv[1], O_RDONLY);
+    i = 0;
+    while (i < rows)
+    {
+        line = get_next_line(fd);
         j = 0;
-        while (j < ft_count_words(line, ' '))
+        while (j < columns && line)
         {
-            map[i][j] = ft_atoi(line);
-            line = line + ft_count_words(line, ' ');
+            map[i][j] = ft_atoi(ft_split(line, ' ')[j]);
             j++;
         }
-        line = get_next_line(fd);
         i++;
     }
     close(fd);
-    // Print matrix
+    // Print entire matrix
     i = 0;
-    while (i < 10)
+    while (i < rows)
     {
         j = 0;
-        while (j < 10)
+        while (j < columns)
         {
             ft_printf("%d ", map[i][j]);
             j++;
