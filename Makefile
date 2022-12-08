@@ -1,19 +1,21 @@
 NAME = fdf
 
-SRC = 	main.c \
+LIBFT = libft.a
+
+SRCS = 	main.c \
 		put_pixel.c
 
-all: name
+OBJS = ${SRCS:.c=.o}
 
-name:
+all:
 	@make -C libft/ all
 	@mv libft/libft.a libft.a
-	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(SRC)
-	@gcc -o $(NAME) main.o libft.a put_pixel.o -Lminilibx-linux -lmlx -lXext -lX11 -lm 
+	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(SRCS)
+	@gcc -o $(NAME) $(OBJS) $(LIBFT) -Lminilibx-linux -lmlx -lXext -lX11 -lm 
 test:
 	@make -C libft/ all
 	@mv libft/libft.a libft.a
-	@gcc -o teste main.c libft.a
+	@gcc -o teste main.c $(LIBFT)
 	@make fclean
 	@clear
 	@./teste maps/42.fdf
