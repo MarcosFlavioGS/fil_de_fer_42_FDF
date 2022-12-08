@@ -10,6 +10,13 @@ name:
 	@mv libft/libft.a libft.a
 	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(SRC)
 	@gcc -o $(NAME) main.o libft.a put_pixel.o -Lminilibx-linux -lmlx -lXext -lX11 -lm 
+test:
+	@make -C libft/ all
+	@mv libft/libft.a libft.a
+	gcc -o teste main.c libft.a
+	@make fclean
+	@clear
+	@./teste maps/42.fdf
 clean:
 	@rm -rf *.o
 fclean: clean
