@@ -20,9 +20,9 @@ test:
 	@clear
 	@./teste maps/42.fdf
 clean:
-	@rm -rf *.o
+	@rm -rf $(OBJS)
 fclean: clean
-	@rm -f $(NAME) libft.a
+	@rm -f $(NAME) $(LIBFT)
 	@make -C libft/ fclean
 
 re: fclean all
