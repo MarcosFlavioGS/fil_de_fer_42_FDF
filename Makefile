@@ -13,7 +13,7 @@ name:
 test:
 	@make -C libft/ all
 	@mv libft/libft.a libft.a
-	gcc -o teste main.c libft.a
+	@gcc -o teste main.c libft.a
 	@make fclean
 	@clear
 	@./teste maps/42.fdf

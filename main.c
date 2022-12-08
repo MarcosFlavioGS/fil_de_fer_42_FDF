@@ -107,11 +107,11 @@ int main(int argc, char **argv)
         i++;
     }
     close(fd);
-    // Print matrix using ft_printf
+    // Print matrix
     i = 0;
-    j = 0;
     while (i < 10)
     {
+        j = 0;
         while (j < 10)
         {
             ft_printf("%d ", map[i][j]);
