@@ -16,5 +16,13 @@ typedef struct s_data
 	int	endian;
 }   t_data;
 
+typedef struct s_dots
+{
+    int value;
+    int x;
+    int y;
+    int color;
+}   t_dot;
+
 void   put_pixel(void);
 #endif
