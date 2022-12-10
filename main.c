@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 {
     int fd;
     char *line;
-    int **map;
+    t_dot **map;
     int columns;
     int rows;
     int i;
@@ -76,11 +76,11 @@ int main(int argc, char **argv)
     columns = ft_count_words(line, ' ');
     close(fd);
     // Allocate memory for matrix
-    map = (int **)malloc(sizeof(int *) * rows);
+    map = malloc(sizeof(t_dot *) * rows);
     i = 0;
     while (i < rows)
     {
-        map[i] = (int *)malloc(sizeof(int) * columns);
+        map[i] = malloc(sizeof(t_dot) * columns);
         i++;
     }
     // Read map into matrix using ft_split and ft_atoi
@@ -92,7 +92,7 @@ int main(int argc, char **argv)
         j = 0;
         while (j < columns && line)
         {
-            map[i][j] = ft_atoi(ft_split(line, ' ')[j]);
+            map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
             j++;
         }
         i++;
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
         j = 0;
         while (j < columns)
         {
-            ft_printf("%d ", map[i][j]);
+            ft_printf("%d ", map[i][j].value);
             j++;
         }
         ft_printf("\n");
