@@ -32,7 +32,7 @@ t_dot **read_map(char *file)
     int j;
     t_dot **map;
 
-    // Get number of lines in map file using get_next_line
+    // Geting number of lines in map
     fd = open(file, O_RDONLY);
     rows = 0;
     line = get_next_line(fd);
@@ -42,12 +42,12 @@ t_dot **read_map(char *file)
         line = get_next_line(fd);
     }
     close(fd);
-    // Get number of columns in map file using ft_count_words
+    // Get number of columns in map
     fd = open(file, O_RDONLY);
     line = get_next_line(fd);
     columns = ft_count_words(line, ' ');
     close(fd);
-    // Allocate memory for matrix
+    // Allocating memory for matrix
     map = malloc(sizeof(t_dot *) * rows);
     i = 0;
     while (i < rows)
@@ -55,7 +55,7 @@ t_dot **read_map(char *file)
         map[i] = malloc(sizeof(t_dot) * columns);
         i++;
     }
-    // Read map into matrix using ft_split and ft_atoi
+    // Reading map into matrix and returning
     fd = open(file, O_RDONLY);
     i = 0;
     while (i < rows)

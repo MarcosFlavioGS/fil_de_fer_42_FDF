@@ -13,8 +13,7 @@
 #include "fdf.h"
 #include "libft/libft.h"
 
-t_dot **read_map(char *file);
-void printer(t_dot **map);
+static void printer(t_dot **map);
 
 int	main(int argc, char **argv)
 {
@@ -30,7 +29,7 @@ int	main(int argc, char **argv)
     //put_pixel();
 }
 
-void printer(t_dot **map)
+static void printer(t_dot **map)
 {
     // Print entire matrix
     int i = 0;
