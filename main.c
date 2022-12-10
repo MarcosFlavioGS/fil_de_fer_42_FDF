@@ -12,98 +12,33 @@
 
 #include "fdf.h"
 #include "libft/libft.h"
-/*
-int	main(void)
+
+t_dot **read_map(char *file);
+void printer(t_dot **map);
+
+int	main(int argc, char **argv)
 {
-    //int **matrix;
+    t_dot **matrix;
 
     if (argc != 2)
     {
-        ft_error("Usage: ./fdf <yourmap.fdf>");
+        ft_printf("Usage: ./fdf <yourmap.fdf>");
     }
     
-    //matrix = read_map(*++argv);
-    put_pixel();
-}
-*/
-
-// ft_count_words function
-
-int ft_count_words(char *str, char c)
-{
-    int i;
-    int count;
-
-    i = 0;
-    count = 0;
-    while (str[i])
-    {
-        if (str[i] != c)
-        {
-            count++;
-            while (str[i] != c && str[i])
-                i++;
-        }
-        else
-            i++;
-    }
-    return (count);
+    matrix = read_map(*++argv);
+    printer(matrix);
+    //put_pixel();
 }
 
-int main(int argc, char **argv)
+void printer(t_dot **map)
 {
-    int fd;
-    char *line;
-    t_dot **map;
-    int columns;
-    int rows;
-    int i;
-    int j;
-
-    // Get number of lines in map file using get_next_line
-    fd = open(argv[1], O_RDONLY);
-    rows = 0;
-    line = get_next_line(fd);
-    while (line)
-    {
-        rows++;
-        line = get_next_line(fd);
-    }
-    close(fd);
-    // Get number of columns in map file using ft_count_words
-    fd = open(argv[1], O_RDONLY);
-    line = get_next_line(fd);
-    columns = ft_count_words(line, ' ');
-    close(fd);
-    // Allocate memory for matrix
-    map = malloc(sizeof(t_dot *) * rows);
-    i = 0;
-    while (i < rows)
-    {
-        map[i] = malloc(sizeof(t_dot) * columns);
-        i++;
-    }
-    // Read map into matrix using ft_split and ft_atoi
-    fd = open(argv[1], O_RDONLY);
-    i = 0;
-    while (i < rows)
-    {
-        line = get_next_line(fd);
-        j = 0;
-        while (j < columns && line)
-        {
-            map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
-            j++;
-        }
-        i++;
-    }
-    close(fd);
     // Print entire matrix
-    i = 0;
-    while (i < rows)
+    int i = 0;
+    int j = 0;
+    while (i < 11)
     {
         j = 0;
-        while (j < columns)
+        while (j < 19)
         {
             ft_printf("%d ", map[i][j].value);
             j++;
@@ -111,5 +46,4 @@ int main(int argc, char **argv)
         ft_printf("\n");
         i++;
     }
-    return (0);
 }

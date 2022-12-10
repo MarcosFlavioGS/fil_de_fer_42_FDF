@@ -25,4 +25,5 @@ typedef struct s_dots
 }   t_dot;
 
 void   put_pixel(void);
+t_dot **read_map(char *file);
 #endif

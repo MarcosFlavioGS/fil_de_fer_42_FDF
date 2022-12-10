@@ -2,8 +2,9 @@ NAME = fdf
 
 LIBFT = libft.a
 
-SRCS = 	main.c \
-		put_pixel.c
+SRCS = 	main.c 		\
+		put_pixel.c \
+		read_map.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -15,7 +16,7 @@ all:
 test:
 	@make -C libft/ all
 	@mv libft/libft.a libft.a
-	@gcc -o teste main.c $(LIBFT)
+	@gcc -o teste main.c read_map.c $(LIBFT)
 	@make fclean
 	@clear
 	@./teste maps/42.fdf
