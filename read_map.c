@@ -65,6 +65,9 @@ t_dot **read_map(char *file)
         while (j < columns && line)
         {
             map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
+            map[i][j].x = j + 5;
+            map[i][j].y = i + 5;
+            map[i][j].color = 0x00FFFFFF;
             j++;
         }
         i++;

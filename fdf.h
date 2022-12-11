@@ -24,6 +24,6 @@ typedef struct s_dots
     int color;
 }   t_dot;
 
-void   put_pixel(void);
+void   put_pixel(t_dot **matrix);
 t_dot **read_map(char *file);
 #endif
