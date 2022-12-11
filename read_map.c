@@ -1,28 +1,7 @@
 #include "fdf.h"
 #include "libft/libft.h"
 
-int ft_count_words(char *str, char c)
-{
-    int i;
-    int count;
-
-    i = 0;
-    count = 0;
-    while (str[i])
-    {
-        if (str[i] != c)
-        {
-            count++;
-            while (str[i] != c && str[i])
-                i++;
-        }
-        else
-            i++;
-    }
-    return (count);
-}
-
-void read(char *file, t_dot **map,int rows, int columns)
+void reader(char *file, t_dot **map,int rows, int columns)
 {
     int fd;
     char *line;
@@ -60,15 +39,12 @@ void read(char *file, t_dot **map,int rows, int columns)
 
 t_dot **read_map(char *file)
 {
-    int fd;
-    char *line;
     int columns;
     int rows;
     int i;
-    int j;
     t_dot **map;
 
-    rows = get_lines(file);
+    rows = get_rows(file);
     columns = get_columns(file);
     // Allocating memory for matrix
     map = malloc(sizeof(t_dot *) * rows);
@@ -78,6 +54,6 @@ t_dot **read_map(char *file)
         map[i] = malloc(sizeof(t_dot) * columns);
         i++;
     }
-    read(file, &map, rows, columns);
+    reader(file, map, rows, columns);
     return (map);
 }

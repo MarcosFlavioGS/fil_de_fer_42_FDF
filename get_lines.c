@@ -1,7 +1,7 @@
 #include "fdf.h"
 
 // Geting number of lines in map
-int get_lines(char *file)
+int get_rows(char *file)
 {
     int fd;
     char *line;

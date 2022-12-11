@@ -26,4 +26,6 @@ typedef struct s_dots
 
 void   put_pixel(t_dot **matrix);
 t_dot **read_map(char *file);
+int get_rows(char *file);
+int get_columns(char *file);
 #endif

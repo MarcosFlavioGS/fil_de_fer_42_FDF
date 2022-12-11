@@ -4,7 +4,9 @@ LIBFT = libft.a
 
 SRCS = 	main.c 		\
 		put_pixel.c \
-		read_map.c
+		read_map.c	\
+		get_lines.c	\
+		get_columns.c	
 
 OBJS = ${SRCS:.c=.o}
 
