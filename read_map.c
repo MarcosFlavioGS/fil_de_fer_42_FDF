@@ -22,48 +22,23 @@ int ft_count_words(char *str, char c)
     return (count);
 }
 
-t_dot **read_map(char *file)
+void read(char *file, t_dot **map,int rows, int columns)
 {
     int fd;
     char *line;
-    int columns;
-    int rows;
     int i;
     int j;
-    t_dot **map;
+    int x;
+    int y;
 
-    // Geting number of lines in map
-    fd = open(file, O_RDONLY);
-    rows = 0;
-    line = get_next_line(fd);
-    while (line)
-    {
-        rows++;
-        line = get_next_line(fd);
-    }
-    close(fd);
-    // Get number of columns in map
-    fd = open(file, O_RDONLY);
-    line = get_next_line(fd);
-    columns = ft_count_words(line, ' ');
-    close(fd);
-    // Allocating memory for matrix
-    map = malloc(sizeof(t_dot *) * rows);
-    i = 0;
-    while (i < rows)
-    {
-        map[i] = malloc(sizeof(t_dot) * columns);
-        i++;
-    }
-    // Reading map into matrix and returning
     fd = open(file, O_RDONLY);
     i = 0;
-    int x = 30;
+    x = 30;
     while (i < rows)
     {
         line = get_next_line(fd);
         j = 0;
-        int y = 30;
+        y = 30;
         while (j < columns && line)
         {
             map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
@@ -80,5 +55,29 @@ t_dot **read_map(char *file)
         x += 15;
     }
     close(fd);
+    free(line);
+}
+
+t_dot **read_map(char *file)
+{
+    int fd;
+    char *line;
+    int columns;
+    int rows;
+    int i;
+    int j;
+    t_dot **map;
+
+    rows = get_lines(file);
+    columns = get_columns(file);
+    // Allocating memory for matrix
+    map = malloc(sizeof(t_dot *) * rows);
+    i = 0;
+    while (i < rows)
+    {
+        map[i] = malloc(sizeof(t_dot) * columns);
+        i++;
+    }
+    read(file, &map, rows, columns);
     return (map);
 }
