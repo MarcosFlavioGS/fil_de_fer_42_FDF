@@ -58,19 +58,26 @@ t_dot **read_map(char *file)
     // Reading map into matrix and returning
     fd = open(file, O_RDONLY);
     i = 0;
+    int x = 30;
     while (i < rows)
     {
         line = get_next_line(fd);
         j = 0;
+        int y = 30;
         while (j < columns && line)
         {
             map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
-            map[i][j].x = j + 5;
-            map[i][j].y = i + 5;
-            map[i][j].color = 0x00FFFFFF;
+            map[i][j].x = y;
+            map[i][j].y = x;
+            if (map[i][j].value != 0)
+              map[i][j].color = 0x00FF0000;
+            else
+              map[i][j].color = 0x00FFFFFF;
             j++;
+            y += 15;
         }
         i++;
+        x += 15;
     }
     close(fd);
     return (map);

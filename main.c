@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
     
     matrix = read_map(*++argv);
     printer(matrix);
-    //put_pixel();
+    put_pixel(matrix);
 }
 
 static void printer(t_dot **map)

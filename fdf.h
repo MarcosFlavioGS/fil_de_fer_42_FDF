@@ -3,7 +3,7 @@
 
 # include <math.h>
 # include "libft/libft.h"
-//# include "mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 
