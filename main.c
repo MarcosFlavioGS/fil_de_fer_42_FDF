@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:30:38 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/12/06 18:44:56 by mflavio-         ###   ########.fr       */
+/*   Updated: 2022/12/12 01:00:40 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	printer(t_dot **map, int rows, int columns);
 
 int	main(int argc, char **argv)
 {
-  int rows;
-  int columns;
+	int		rows;
+	int		columns;
 	t_dot	**matrix;
 
 	if (argc != 2)
@@ -26,14 +26,14 @@ int	main(int argc, char **argv)
 		ft_printf("Usage: ./fdf <yourmap.fdf>");
 	}
 
-  rows = get_rows(char *file);
-  columns = get_columns(char *file);
+	rows = get_rows(*++argv);
+	columns = get_columns(*++argv);
 	matrix = read_map(*++argv, rows, columns);
 	printer(matrix, rows, columns);
 	put_pixel(matrix);
 }
 
-static void	printer(t_dot **map, rows, columns)
+static void	printer(t_dot **map, int rows, int columns)
 {
 	int	i = 0;
 	int	j = 0;

@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/12 00:27:32 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/12 00:59:39 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_dots
 }	t_dot;
 
 void	put_pixel(t_dot **matrix);
-t_dot	**read_map(char *file);
+t_dot	**read_map(char *file, int rows, int columns);
 int		get_rows(char *file);
 int		get_columns(char *file);
 #endif
