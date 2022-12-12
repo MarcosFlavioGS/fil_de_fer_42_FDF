@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	put_pixel(t_dot **matrix)
+void	put_pixel(t_dot **matrix, int rows, int columns)
 {
 	void	*mlx;
 	void	*window;
@@ -33,10 +33,10 @@ void	put_pixel(t_dot **matrix)
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.buffer = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	i = 0;
-	while (i < 11)
+	while (i < rows)
 	{
 		j = 0;
-		while (j < 19)
+		while (j < columns)
 		{
 			my_mlx_pixel_put(&img, matrix[i][j].x, matrix[i][j].y, matrix[i][j].color);
 			j++;

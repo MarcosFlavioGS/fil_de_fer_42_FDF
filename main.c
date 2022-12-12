@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	columns = get_columns(argv[1]);
 	matrix = read_map(*++argv, rows, columns);
 	printer(matrix, rows, columns);
-	put_pixel(matrix);
+	put_pixel(matrix, rows, columns);
 }
 
 static void	printer(t_dot **map, int rows, int columns)
