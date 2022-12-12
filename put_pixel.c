@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
+/*   Updated: 2022/12/12 00:31:43 by mflavio          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -8,13 +20,13 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void    put_pixel(t_dot **matrix)
+void	put_pixel(t_dot **matrix)
 {
-	void		*mlx;
-	void		*window;
-	t_data		img;
-	int			i;
-	int			j;
+	void	*mlx;
+	void	*window;
+	t_data	img;
+	int		i;
+	int		j;
 	
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 1920, 1080, "FDF");
