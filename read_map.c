@@ -49,15 +49,11 @@ static void	reader(char *file, t_dot **map,int rows, int columns)
 	free(line);
 }
 
-t_dot	**read_map(char *file)
+t_dot	**read_map(char *file, int rows, int columns)
 {
-	int		columns;
-	int		rows;
 	int		i;
 	t_dot	**map;
 	
-	rows = get_rows(file);
-	columns = get_columns(file);
 	map = malloc(sizeof(t_dot *) * rows);
 	i = 0;
 	while (i < rows)

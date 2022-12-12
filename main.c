@@ -13,30 +13,34 @@
 #include "fdf.h"
 #include "libft/libft.h"
 
-static void	printer(t_dot **map);
+static void	printer(t_dot **map, int rows, int columns);
 
 int	main(int argc, char **argv)
 {
+  int rows;
+  int columns;
 	t_dot	**matrix;
 
 	if (argc != 2)
 	{
 		ft_printf("Usage: ./fdf <yourmap.fdf>");
 	}
-    
-	matrix = read_map(*++argv);
-	printer(matrix);
+
+  rows = get_rows(char *file);
+  columns = get_columns(char *file);
+	matrix = read_map(*++argv, rows, columns);
+	printer(matrix, rows, columns);
 	put_pixel(matrix);
 }
 
-static void	printer(t_dot **map)
+static void	printer(t_dot **map, rows, columns)
 {
 	int	i = 0;
 	int	j = 0;
-	while (i < 11)
+	while (i < rows)
 	{
 		j = 0;
-		while (j < 19)
+		while (j < columns)
 		{
 			ft_printf("%d ", map[i][j].value);
 			j++;
