@@ -6,13 +6,13 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:26:52 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/12 00:27:20 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/12 00:44:29 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_count_words(char *str, char c)
+static int	ft_count_words(char *str, char c)
 {
 	int	i;
 	int	count;

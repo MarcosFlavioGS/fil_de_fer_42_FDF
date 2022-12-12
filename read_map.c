@@ -6,14 +6,14 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/12 00:40:38 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/12 00:45:32 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "libft/libft.h"
 
-void	reader(char *file, t_dot **map,int rows, int columns)
+static void	reader(char *file, t_dot **map,int rows, int columns)
 {
 	int		fd;
 	char	*line;
