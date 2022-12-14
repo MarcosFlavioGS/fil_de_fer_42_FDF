@@ -24,12 +24,12 @@ static void	reader(char *file, t_dot **map,int rows, int columns)
 	
 	fd = open(file, O_RDONLY);
 	i = 0;
-	x = 30;
+	x = 50;
 	while (i < rows)
 	{
 		line = get_next_line(fd);
 		j = 0;
-		y = 30;
+		y = 50;
 		while (j < columns && line)
 		{
 			map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);

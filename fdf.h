@@ -41,5 +41,5 @@ void	put_pixel(t_dot **matrix, int rows, int columns);
 t_dot	**read_map(char *file, int rows, int columns);
 int		get_rows(char *file);
 int		get_columns(char *file);
-void	isometric(t_dot **matrix);
+void	isometric(t_dot **matrix, int rows, int columns);
 #endif

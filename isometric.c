@@ -1,18 +1,18 @@
 #include "fdf.h"
 
-void    isometric(t_dot **matrix)
+void    isometric(t_dot **matrix, int rows, int columns)
 {
     int i;
     int j;
 
     i = 0;
-    while (matrix[i])
+    while (i < rows)
     {
         j = 0;
-        while (matrix[i][j].value != 0)
+        while (j < columns)
         {
-            matrix[i][j].x = (matrix[i][j].x - matrix[i][j].y) * cos(0.523599);
-            matrix[i][j].y = (matrix[i][j].x + matrix[i][j].y) * sin(0.523599) - matrix[i][j].value;
+            matrix[i][j].x = (matrix[i][j].x - matrix[i][j].y) * cos(0.5);
+            matrix[i][j].y = (matrix[i][j].x + matrix[i][j].y) * sin(0.5) - matrix[i][j].value;
             j++;
         }
         i++;

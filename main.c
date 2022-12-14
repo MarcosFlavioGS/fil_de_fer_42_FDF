@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	rows = get_rows(argv[1]);
 	columns = get_columns(argv[1]);
 	matrix = read_map(*++argv, rows, columns);
-	isometric(matrix);
+	isometric(matrix, rows, columns);
 	printer(matrix, rows, columns);
 	put_pixel(matrix, rows, columns);
 }
