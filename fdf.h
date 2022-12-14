@@ -18,6 +18,7 @@
 # include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
+#include <math.h>
 
 typedef struct s_data
 {
