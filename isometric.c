@@ -2,23 +2,17 @@
 
 void    isometric(t_dot **matrix)
 {
-    int     i;
-    int     j;
-    int     x;
-    int     y;
-    int     z;
+    int i;
+    int j;
 
     i = 0;
     while (matrix[i])
     {
         j = 0;
-        while (matrix[i][j].x != -1)
+        while (matrix[i][j].value != 0)
         {
-            x = matrix[i][j].x;
-            y = matrix[i][j].y;
-            z = matrix[i][j].value;
-            matrix[i][j].x = (x - y) * cos(0.523599);
-            matrix[i][j].y = -z + (x + y) * sin(0.523599);
+            matrix[i][j].x = (matrix[i][j].x - matrix[i][j].y) * cos(0.523599);
+            matrix[i][j].y = (matrix[i][j].x + matrix[i][j].y) * sin(0.523599) - matrix[i][j].value;
             j++;
         }
         i++;
