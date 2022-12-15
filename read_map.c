@@ -40,10 +40,10 @@ static void	reader(char *file, t_dot **map,int rows, int columns)
 			else
 				map[i][j].color = 0x00FFFFFF;
 			j++;
-			y += 5;
+			y += 7;
 		}
 		i++;
-		x += 5;
+		x += 7;
 	}
 	close(fd);
 	free(line);

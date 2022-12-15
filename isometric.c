@@ -13,7 +13,7 @@ void    isometric(t_dot **matrix, int rows, int columns)
         {
             matrix[i][j].x = (matrix[i][j].x - matrix[i][j].y) * cos(0.5);
             matrix[i][j].y = (matrix[i][j].x + matrix[i][j].y) * sin(0.5) - matrix[i][j].value;
-            matrix[i][j].x += 550;
+            matrix[i][j].x += 600;
             matrix[i][j].y += 200;
             j++;
         }

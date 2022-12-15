@@ -16,17 +16,14 @@ all:
 	@mv libft/libft.a libft.a
 	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(SRCS)
 	@gcc -o $(NAME) $(OBJS) $(LIBFT) -Lminilibx-linux -lmlx -lXext -lX11 -lm 
-test:
-	@make -C libft/ all
-	@mv libft/libft.a libft.a
-	@gcc -o teste main.c read_map.c $(LIBFT)
+test: all
 	@make fclean
 	@clear
-	@./teste maps/42.fdf
+	@./fdf maps/42.fdf
 clean:
 	@rm -rf $(OBJS)
 fclean: clean
-	@rm -f $(NAME) $(LIBFT)
+	@rm -f $(LIBFT)
 	@make -C libft/ fclean
 
 re: fclean all
