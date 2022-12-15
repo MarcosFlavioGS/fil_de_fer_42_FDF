@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/14 19:45:49 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/15 00:16:56 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
-#include <math.h>
+# include <math.h>
 
 typedef struct s_data
 {

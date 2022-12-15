@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:30:38 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/12/12 01:05:03 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/15 00:17:19 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 	isometric(matrix, rows, columns);
 	printer(matrix, rows, columns);
 	put_pixel(matrix, rows, columns);
+	free (matrix);
+	return (0);
 }
 
 static void	printer(t_dot **map, int rows, int columns)
