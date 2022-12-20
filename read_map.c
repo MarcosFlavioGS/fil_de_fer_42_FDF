@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/12 00:45:32 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/20 19:56:15 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static void	reader(char *file, t_dot **map,int rows, int columns)
 			map[i][j].x = y;
 			map[i][j].y = x;
 			if (map[i][j].value != 0)
-				map[i][j].color = 0x00FF0000;
+				map[i][j].color = 0x00FFFFFF;
 			else
 				map[i][j].color = 0x00FFFFFF;
 			j++;
-			y += 7;
+			y += 30;
 		}
 		i++;
-		x += 7;
+		x += 30;
 	}
 	close(fd);
 	free(line);
