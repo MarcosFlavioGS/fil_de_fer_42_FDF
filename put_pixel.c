@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/20 19:55:47 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 20:54:20 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,6 @@ void	put_pixel(t_dot **matrix, int rows, int columns)
 	*/
 	draw_line(matrix, rows, columns, &img);
 	mlx_put_image_to_window(mlx, window, img.img, 0 , 0);
+	free (matrix);
 	mlx_loop(mlx);
 }

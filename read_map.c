@@ -6,14 +6,14 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/20 19:56:15 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 20:54:44 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "libft/libft.h"
 
-static void	reader(char *file, t_dot **map,int rows, int columns)
+static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 {
 	int		fd;
 	char	*line;
@@ -24,7 +24,8 @@ static void	reader(char *file, t_dot **map,int rows, int columns)
 	
 	fd = open(file, O_RDONLY);
 	i = 0;
-	x = 50;
+	x = 80;
+	line = NULL;
 	while (i < rows)
 	{
 		line = get_next_line(fd);
@@ -33,27 +34,22 @@ static void	reader(char *file, t_dot **map,int rows, int columns)
 		while (j < columns && line)
 		{
 			map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
-			map[i][j].x = y;
+			map[i][j].x = y += dist;
 			map[i][j].y = x;
-			if (map[i][j].value != 0)
-				map[i][j].color = 0x00FFFFFF;
-			else
-				map[i][j].color = 0x00FFFFFF;
-			j++;
-			y += 30;
+			map[i][j++].color = 0x00FFFFFF;
 		}
 		i++;
-		x += 30;
+		x += dist;
+    free (line);
 	}
 	close(fd);
-	free(line);
 }
 
 t_dot	**read_map(char *file, int rows, int columns)
 {
 	int		i;
 	t_dot	**map;
-	
+
 	map = malloc(sizeof(t_dot *) * rows);
 	i = 0;
 	while (i < rows)
@@ -61,6 +57,9 @@ t_dot	**read_map(char *file, int rows, int columns)
 		map[i] = malloc(sizeof(t_dot) * columns);
 		i++;
 	}
-	reader(file, map, rows, columns);
+  if (rows > 100 || columns > 100)
+	  reader(file, map, rows, columns, 6);
+  else
+    reader(file, map, rows, columns, 20);
 	return (map);
 }

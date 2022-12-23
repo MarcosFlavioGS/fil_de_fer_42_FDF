@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 00:15:18 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/15 00:17:09 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 20:20:35 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    isometric(t_dot **matrix, int rows, int columns)
         while (j < columns)
         {
             matrix[i][j].x = (matrix[i][j].x - matrix[i][j].y) * cos(0.5);
-            matrix[i][j].y = (matrix[i][j].x + matrix[i][j].y) * sin(0.5) - matrix[i][j].value;
+            matrix[i][j].y = (matrix[i][j].x + matrix[i][j].y) * sin(0.4) - matrix[i][j].value;
             matrix[i][j].x += 600;
             matrix[i][j].y += 200;
             j++;

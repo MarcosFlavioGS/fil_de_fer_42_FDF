@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:30:38 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/12/20 19:36:03 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 20:35:17 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_printf("Usage: ./fdf <yourmap.fdf>");
+		return (1);
 	}
 
 	rows = get_rows(argv[1]);
@@ -29,6 +30,5 @@ int	main(int argc, char **argv)
 	matrix = read_map(*++argv, rows, columns);
 	isometric(matrix, rows, columns);
 	put_pixel(matrix, rows, columns);
-	free (matrix);
 	return (0);
 }
