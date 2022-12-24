@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 20:54:20 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 21:35:16 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 }
 
 // draw lines between points in the matrix (map) using Bresenham's line algorithm and my_mlx_pixel_put function
-void	draw_line(t_dot **matrix, int rows, int columns, t_data *img)
+void	draw_line(t_dot **matrix, int rows, int columns, t_data *img, int color)
 {
 	int		i;
 	int		j;
@@ -66,11 +66,9 @@ void	draw_line(t_dot **matrix, int rows, int columns, t_data *img)
 					err = dx / 2;
 				else
 					err = -dy / 2;
-				while (1)
+				while (x1 != x2 && y1 != y2)
 				{
-					my_mlx_pixel_put(img, x1, y1, matrix[i][j].color);
-					if (x1 == x2 && y1 == y2)
-						break ;
+					my_mlx_pixel_put(img, x1, y1, color);
 					e2 = err;
 					if (e2 > -dx)
 					{
@@ -106,7 +104,7 @@ void	draw_line(t_dot **matrix, int rows, int columns, t_data *img)
 					err = -dy / 2;
 				while (1)
 				{
-					my_mlx_pixel_put(img, x1, y1, matrix[i][j].color);
+					my_mlx_pixel_put(img, x1, y1, color);
 					if (x1 == x2 && y1 == y2)
 						break ;
 					e2 = err;
@@ -131,10 +129,12 @@ void	put_pixel(t_dot **matrix, int rows, int columns)
 {
 	void	*mlx;
 	void	*window;
+	int		color;
 	t_data	img;
 	//int		i;
 	//int		j;
 	
+	color = 0x00FFFFFF;
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 1920, 1080, "FDF");
 	img.img = mlx_new_image(mlx, 1920, 1080);
@@ -152,7 +152,7 @@ void	put_pixel(t_dot **matrix, int rows, int columns)
 		i++;
 	}
 	*/
-	draw_line(matrix, rows, columns, &img);
+	draw_line(matrix, rows, columns, &img, color);
 	mlx_put_image_to_window(mlx, window, img.img, 0 , 0);
 	free (matrix);
 	mlx_loop(mlx);

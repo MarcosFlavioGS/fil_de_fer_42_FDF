@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 20:54:44 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 21:20:47 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 		{
 			map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
 			map[i][j].x = y += dist;
-			map[i][j].y = x;
-			map[i][j++].color = 0x00FFFFFF;
+			map[i][j++].y = x;
 		}
 		i++;
 		x += dist;

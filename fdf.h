@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 20:43:20 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 21:22:01 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_dots
 	int	value;
 	int	x;
 	int	y;
-	int	color;
 }	t_dot;
 
 void	put_pixel(t_dot **matrix, int rows, int columns);
