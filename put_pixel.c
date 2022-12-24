@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 23:29:01 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 23:37:34 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,6 @@ void	setter(t_params *p, t_dot **matrix, int i, int j)
 	p->y1 = p->y;
 	p->x2 = matrix[i][j].x;
 	p->y2 = matrix[i][j].y;
-	p->dx = abs(p->x2 - p->x1);
-	p->dy = abs(p->y2 - p->y1);
-}
-
-void	set_row(t_params *p, t_dot **matrix, int *i, int *j)
-{
-	p->x1 = p->x;
-	p->y1 = p->y;
-	p->x2 = matrix[*i + 1][*j].x;
-	p->y2 = matrix[*i + 1][*j].y;
 	p->dx = abs(p->x2 - p->x1);
 	p->dy = abs(p->y2 - p->y1);
 }
@@ -109,33 +99,38 @@ void	draw_line(t_dot **matrix, int rows, int columns, t_data *img, int color)
 		i++;
 	}
 }
-void	put_pixel(t_dot **matrix, int rows, int columns)
+/*
+void	put_pixels_matrix(t_dot **matrix, int rows, int columns, t_data *img, int color)
 {
-	void	*mlx;
-	void	*window;
-	int		color;
-	t_data	img;
-	//int		i;
-	//int		j;
+	int		i;
+	int		j;
 	
-	color = 0x00FFFFFF;
-	mlx = mlx_init();
-	window = mlx_new_window(mlx, 1920, 1080, "FDF");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.buffer = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	/*
 	i = 0;
 	while (i < rows)
 	{
 		j = 0;
 		while (j < columns)
 		{
-			my_mlx_pixel_put(&img, matrix[i][j].x, matrix[i][j].y, matrix[i][j].color);
+			my_mlx_pixel_put(img, matrix[i][j].x, matrix[i][j].y, color);
 			j++;
 		}
 		i++;
 	}
-	*/
+}
+*/
+void	put_pixel(t_dot **matrix, int rows, int columns)
+{
+	void	*mlx;
+	void	*window;
+	int		color;
+	t_data	img;
+	
+	color = 0x00FFFFFF;
+	mlx = mlx_init();
+	window = mlx_new_window(mlx, 1920, 1080, "FDF");
+	img.img = mlx_new_image(mlx, 1920, 1080);
+	img.buffer = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	//put_pixels_matrix(matrix, rows, columns, &img, color);
 	draw_line(matrix, rows, columns, &img, color);
 	mlx_put_image_to_window(mlx, window, img.img, 0 , 0);
 	free (matrix);
