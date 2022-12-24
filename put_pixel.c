@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 21:35:16 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 22:11:13 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,69 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+void	set_column(t_params *p, t_dot **matrix, int *i, int *j)
+{
+	p->x1 = p->x;
+	p->y1 = p->y;
+	p->x2 = matrix[*i][*j + 1].x;
+	p->y2 = matrix[*i][*j + 1].y;
+	p->dx = abs(p->x2 - p->x1);
+	p->dy = abs(p->y2 - p->y1);
+}
+
+void	set_row(t_params *p, t_dot **matrix, int *i, int *j)
+{
+	p->x1 = p->x;
+	p->y1 = p->y;
+	p->x2 = matrix[*i + 1][*j].x;
+	p->y2 = matrix[*i + 1][*j].y;
+	p->dx = abs(p->x2 - p->x1);
+	p->dy = abs(p->y2 - p->y1);
+}
+
+void	liner(t_params p, t_data *img, int color)
+{
+	while (1)
+	{
+		my_mlx_pixel_put(img, p.x1, p.y1, color);
+		if (p.x1 == p.x2 && p.y1 == p.y2)
+			break ;
+		p.e2 = p.err;
+		if (p.e2 > -p.dx)
+		{
+			p.err -= p.dy;
+			p.x1 += p.sx;
+		}
+		if (p.e2 < p.dy)
+		{
+			p.err += p.dx;
+			p.y1 += p.sy;
+		}
+	}
+}
+
+void	conditioner(t_params *p)
+{
+	if (p->x1 < p->x2)
+		p->sx = 1;
+	else
+		p->sx = -1;
+	if (p->y1 < p->y2)
+		p->sy = 1;
+	else
+		p->sy = -1;
+	if (p->dx > p->dy)
+		p->err = p->dx / 2;
+	else
+		p->err = -p->dy / 2;
+}
+
 // draw lines between points in the matrix (map) using Bresenham's line algorithm and my_mlx_pixel_put function
 void	draw_line(t_dot **matrix, int rows, int columns, t_data *img, int color)
 {
-	int		i;
-	int		j;
-	int		x;
-	int		y;
-	int		x1;
-	int		y1;
-	int		x2;
-	int		y2;
-	int		dx;
-	int		dy;
-	int		sx;
-	int		sy;
-	int		err;
-	int		e2;
+	int			i;
+	int			j;
+	t_params	p;	
 	
 	i = 0;
 	while (i < rows)
@@ -44,81 +90,19 @@ void	draw_line(t_dot **matrix, int rows, int columns, t_data *img, int color)
 		j = 0;
 		while (j < columns)
 		{
-			x = matrix[i][j].x;
-			y = matrix[i][j].y;
+			p.x = matrix[i][j].x;
+			p.y = matrix[i][j].y;
 			if (j + 1 < columns)
 			{
-				x1 = x;
-				y1 = y;
-				x2 = matrix[i][j + 1].x;
-				y2 = matrix[i][j + 1].y;
-				dx = abs(x2 - x1);
-				dy = abs(y2 - y1);
-				if (x1 < x2)
-					sx = 1;
-				else
-					sx = -1;
-				if (y1 < y2)
-					sy = 1;
-				else
-					sy = -1;
-				if (dx > dy)
-					err = dx / 2;
-				else
-					err = -dy / 2;
-				while (x1 != x2 && y1 != y2)
-				{
-					my_mlx_pixel_put(img, x1, y1, color);
-					e2 = err;
-					if (e2 > -dx)
-					{
-						err -= dy;
-						x1 += sx;
-					}
-					if (e2 < dy)
-					{
-						err += dx;
-						y1 += sy;
-					}
-				}
+				set_column(&p, matrix, &i, &j);
+				conditioner(&p);
+				liner(p, img, color);
 			}
 			if (i + 1 < rows)
 			{
-				x1 = x;
-				y1 = y;
-				x2 = matrix[i + 1][j].x;
-				y2 = matrix[i + 1][j].y;
-				dx = abs(x2 - x1);
-				dy = abs(y2 - y1);
-				if (x1 < x2)
-					sx = 1;
-				else
-					sx = -1;
-				if (y1 < y2)
-					sy = 1;
-				else
-					sy = -1;
-				if (dx > dy)
-					err = dx / 2;
-				else
-					err = -dy / 2;
-				while (1)
-				{
-					my_mlx_pixel_put(img, x1, y1, color);
-					if (x1 == x2 && y1 == y2)
-						break ;
-					e2 = err;
-					if (e2 > -dx)
-					{
-						err -= dy;
-						x1 += sx;
-					}
-					if (e2 < dy)
-					{
-						err += dx;
-						y1 += sy;
-					}
-				}
+				set_row(&p, matrix, &i, &j);
+				conditioner(&p);
+				liner(p, img, color);
 			}
 			j++;
 		}
