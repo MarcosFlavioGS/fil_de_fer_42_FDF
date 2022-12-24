@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/24 19:21:07 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/24 19:35:54 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,35 +67,38 @@ void	conditioner(t_params *p)
 		p->err = -p->dy / 2;
 }
 
+void	checker(t_params p, t_dot **matrix, int rows, int columns, t_data *img, int color)
+{
+	if (p.j + 1 < columns)
+	{
+		setter(&p, matrix, p.i, p.j + 1);
+		conditioner(&p);
+		liner(p, img, color);
+	}
+	if (p.i + 1 < rows)
+	{
+		setter(&p, matrix, p.i + 1, p.j);
+		conditioner(&p);
+		liner(p, img, color);
+	}
+}
+
 void	draw_line(t_dot **matrix, int rows, int columns, t_data *img, int color)
 {
-	int			i;
-	int			j;
 	t_params	p;	
 	
-	i = 0;
-	while (i < rows)
+	p.i = 0;
+	while (p.i < rows)
 	{
-		j = 0;
-		while (j < columns)
+		p.j = 0;
+		while (p.j < columns)
 		{
-			p.x = matrix[i][j].x;
-			p.y = matrix[i][j].y;
-			if (j + 1 < columns)
-			{
-				setter(&p, matrix, i, j + 1);
-				conditioner(&p);
-				liner(p, img, color);
-			}
-			if (i + 1 < rows)
-			{
-				setter(&p, matrix, i + 1, j);
-				conditioner(&p);
-				liner(p, img, color);
-			}
-			j++;
+			p.x = matrix[p.i][p.j].x;
+			p.y = matrix[p.i][p.j].y;
+			checker(p, matrix, rows, columns, img, color);
+			p.j++;
 		}
-		i++;
+		p.i++;
 	}
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/24 19:06:54 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/24 19:35:57 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_dots
 
 typedef struct s_params
 {
+	int	i;
+	int	j;
 	int	x;
 	int	y;
 	int	x1;
