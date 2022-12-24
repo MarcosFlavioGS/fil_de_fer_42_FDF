@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 22:11:13 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/23 23:29:01 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	set_column(t_params *p, t_dot **matrix, int *i, int *j)
+void	setter(t_params *p, t_dot **matrix, int i, int j)
 {
 	p->x1 = p->x;
 	p->y1 = p->y;
-	p->x2 = matrix[*i][*j + 1].x;
-	p->y2 = matrix[*i][*j + 1].y;
+	p->x2 = matrix[i][j].x;
+	p->y2 = matrix[i][j].y;
 	p->dx = abs(p->x2 - p->x1);
 	p->dy = abs(p->y2 - p->y1);
 }
@@ -94,13 +94,13 @@ void	draw_line(t_dot **matrix, int rows, int columns, t_data *img, int color)
 			p.y = matrix[i][j].y;
 			if (j + 1 < columns)
 			{
-				set_column(&p, matrix, &i, &j);
+				setter(&p, matrix, i, j + 1);
 				conditioner(&p);
 				liner(p, img, color);
 			}
 			if (i + 1 < rows)
 			{
-				set_row(&p, matrix, &i, &j);
+				setter(&p, matrix, i + 1, j);
 				conditioner(&p);
 				liner(p, img, color);
 			}
