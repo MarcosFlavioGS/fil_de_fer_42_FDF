@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 23:37:34 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/24 19:21:07 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	conditioner(t_params *p)
 		p->err = -p->dy / 2;
 }
 
-// draw lines between points in the matrix (map) using Bresenham's line algorithm and my_mlx_pixel_put function
 void	draw_line(t_dot **matrix, int rows, int columns, t_data *img, int color)
 {
 	int			i;

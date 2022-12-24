@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 21:20:47 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/24 19:12:52 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,28 @@
 
 static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 {
-	int		fd;
-	char	*line;
-	int		i;
-	int		j;
-	int		x;
-	int		y;
+	t_read	read;
 	
-	fd = open(file, O_RDONLY);
-	i = 0;
-	x = 80;
-	line = NULL;
-	while (i < rows)
+	read.fd = open(file, O_RDONLY);
+	read.i = 0;
+	read.x = 80;
+	read.line = NULL;
+	while (read.i < rows)
 	{
-		line = get_next_line(fd);
-		j = 0;
-		y = 50;
-		while (j < columns && line)
+		read.line = get_next_line(read.fd);
+		read.j = 0;
+		read.y = 50;
+		while (read.j < columns && read.line)
 		{
-			map[i][j].value = ft_atoi(ft_split(line, ' ')[j]);
-			map[i][j].x = y += dist;
-			map[i][j++].y = x;
+			map[read.i][read.j].value = ft_atoi(ft_split(read.line, ' ')[read.j]);
+			map[read.i][read.j].x = read.y += dist;
+			map[read.i][read.j++].y = read.x;
 		}
-		i++;
-		x += dist;
-    free (line);
+		read.i++;
+		read.x += dist;
+		free(read.line);
 	}
-	close(fd);
+	close(read.fd);
 }
 
 t_dot	**read_map(char *file, int rows, int columns)
@@ -56,9 +51,9 @@ t_dot	**read_map(char *file, int rows, int columns)
 		map[i] = malloc(sizeof(t_dot) * columns);
 		i++;
 	}
-  if (rows > 100 || columns > 100)
-	  reader(file, map, rows, columns, 6);
-  else
-    reader(file, map, rows, columns, 20);
+  	if (rows > 100 || columns > 100)
+		reader(file, map, rows, columns, 6);
+	else
+		reader(file, map, rows, columns, 20);
 	return (map);
 }

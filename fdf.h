@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/23 21:45:19 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/24 19:06:54 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ typedef struct s_params
 	int	err;
 	int	e2;
 }	t_params;
+
+typedef struct s_read
+{
+	int		fd;
+	char	*line;
+	int		i;
+	int		j;
+	int		x;
+	int		y;
+}	t_read;
 
 void	put_pixel(t_dot **matrix, int rows, int columns);
 t_dot	**read_map(char *file, int rows, int columns);
