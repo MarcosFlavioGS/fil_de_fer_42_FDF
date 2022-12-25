@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/24 19:35:57 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/25 01:09:48 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,5 @@ t_dot	**read_map(char *file, int rows, int columns);
 int		get_rows(char *file);
 int		get_columns(char *file);
 void	isometric(t_dot **matrix, int rows, int columns);
+void	checker(t_params p, t_dot **matrix, int rows, int columns, t_data *img, int color);
 #endif

@@ -7,7 +7,8 @@ SRCS = 	main.c 			\
 		read_map.c		\
 		get_lines.c		\
 		get_columns.c	\
-		isometric.c
+		isometric.c		\
+		pixel_aux.c
 
 OBJS = ${SRCS:.c=.o}
 
