@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/25 01:17:30 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/25 02:11:46 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,22 +111,27 @@ void	put_pixels_matrix(t_dot **matrix, int rows, int columns, t_data *img, int c
 		i++;
 	}
 }
+int	close_window(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(0);
+}
 */
 void	put_pixel(t_dot **matrix, int rows, int columns)
 {
-	void	*mlx;
-	void	*window;
 	int		color;
 	t_data	img;
+	t_vars	vars;
 	
 	color = 0x00FFFFFF;
-	mlx = mlx_init();
-	window = mlx_new_window(mlx, 1920, 1080, "FDF");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "FDF");
+	img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	img.buffer = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	//put_pixels_matrix(matrix, rows, columns, &img, color);
 	draw_line(matrix, rows, columns, &img, color);
-	mlx_put_image_to_window(mlx, window, img.img, 0 , 0);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0 , 0);
+	mlx_hook(vars.win, 17, 1L<<17, close_window, &vars);
 	free (matrix);
-	mlx_loop(mlx);
+	mlx_loop(vars.mlx);
 }

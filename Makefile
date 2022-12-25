@@ -8,7 +8,8 @@ SRCS = 	main.c 			\
 		get_lines.c		\
 		get_columns.c	\
 		isometric.c		\
-		pixel_aux.c
+		pixel_aux.c		\
+		close_window.c	
 
 OBJS = ${SRCS:.c=.o}
 
