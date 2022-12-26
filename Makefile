@@ -30,7 +30,7 @@ leak:
 	@gcc -o $(NAME) -g $(OBJS) $(LIBFT) -Lminilibx-linux -lmlx -lXext -lX11 -lm
 	@make fclean
 	@clear
-	@valgrind --leak-check=yes ./fdf maps/42.fdf
+	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=no --track-origins=yes ./fdf maps/42.fdf
 clean:
 	@rm -rf $(OBJS)
 fclean: clean

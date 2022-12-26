@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 12:04:26 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/26 16:59:00 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 	read.fd = open(file, O_RDONLY);
 	read.i = 0;
 	read.x = 80;
-	read.line = NULL;
+	read.line = get_next_line(read.fd);
 	while (read.i < rows)
 	{
 		read.line = get_next_line(read.fd);
@@ -29,9 +29,11 @@ static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 		while (read.j < columns && read.line)
 		{
 			map[read.i][read.j].value = ft_atoi(ft_split(read.line, ' ')[read.j]);
-			map[read.i][read.j].x = read.y += dist;
-			map[read.i][read.j++].y = read.x;
 			free (ft_split(read.line, ' ')[read.j]);
+			map[read.i][read.j].x = read.y;
+			map[read.i][read.j].y = read.x;
+			read.y += dist;
+			read.j++;
 		}
 		read.i++;
 		read.x += dist;
@@ -45,11 +47,11 @@ t_dot	**allocation(int rows, int columns)
 	int		i;
 	t_dot	**map;
 
-	map = malloc(sizeof(t_dot *) * rows);
+	map = (t_dot **)malloc(sizeof(t_dot *) * rows);
 	i = 0;
 	while (i < rows)
 	{
-		map[i] = malloc(sizeof(t_dot) * columns);
+		map[i] = (t_dot *)malloc(sizeof(t_dot) * columns);
 		i++;
 	}
 	return (map);
