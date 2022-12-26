@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/25 02:08:56 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/26 01:10:13 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 typedef struct s_data
 {
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*buffer;
 	int		bits_per_pixel;
@@ -63,18 +65,12 @@ typedef struct s_read
 	int		y;
 }	t_read;
 
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-	t_data	*img;
-}	t_vars;
-
 void	put_pixel(t_dot **matrix, int rows, int columns);
 t_dot	**read_map(char *file, int rows, int columns);
 int		get_rows(char *file);
 int		get_columns(char *file);
 void	isometric(t_dot **matrix, int rows, int columns);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		close_window(t_vars *vars);
+int		close_window(t_data *vars);
+void	mlx_set(t_data *vars);
 #endif

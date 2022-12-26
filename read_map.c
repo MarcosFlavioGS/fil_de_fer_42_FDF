@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/24 19:12:52 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/26 01:02:15 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 			map[read.i][read.j].value = ft_atoi(ft_split(read.line, ' ')[read.j]);
 			map[read.i][read.j].x = read.y += dist;
 			map[read.i][read.j++].y = read.x;
+			free (ft_split(read.line, ' ')[read.j]);
 		}
 		read.i++;
 		read.x += dist;
@@ -39,7 +40,7 @@ static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 	close(read.fd);
 }
 
-t_dot	**read_map(char *file, int rows, int columns)
+t_dot	**allocation(int rows, int columns)
 {
 	int		i;
 	t_dot	**map;
@@ -51,6 +52,13 @@ t_dot	**read_map(char *file, int rows, int columns)
 		map[i] = malloc(sizeof(t_dot) * columns);
 		i++;
 	}
+	return (map);
+}
+
+t_dot	**read_map(char *file, int rows, int columns)
+{
+	t_dot	**map;
+	map = allocation(rows, columns);
   	if (rows > 100 || columns > 100)
 		reader(file, map, rows, columns, 6);
 	else

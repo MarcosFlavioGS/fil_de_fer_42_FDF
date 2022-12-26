@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 02:02:36 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 01:02:50 by mflavio          ###   ########.fr       */
+/*   Created: 2022/12/26 01:08:29 by mflavio           #+#    #+#             */
+/*   Updated: 2022/12/26 01:08:51 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	close_window(t_data *vars)
+void	mlx_set(t_data *data)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, 1920, 1080, "FDF");
+	data->img = mlx_new_image(data->mlx, 1920, 1080);
+	data->buffer = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
 }

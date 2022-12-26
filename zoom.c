@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 02:02:36 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 01:02:50 by mflavio          ###   ########.fr       */
+/*   Created: 2022/12/25 02:37:18 by mflavio           #+#    #+#             */
+/*   Updated: 2022/12/25 11:18:50 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	close_window(t_data *vars)
+void	zoom_in(t_dot **matrix, int i, int j, int zoom)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+    matrix[i][j].x *= zoom;
+    matrix[i][j].y *= zoom;
+}
+
+void	zoom_out(t_dot **matrix, int i, int j, int zoom)
+{
+    matrix[i][j].x /= zoom;
+    matrix[i][j].y /= zoom;
+}
+
+void    zoomer(t_dot **matrix, int rows, int columns, int zoom)
+{
+    if (zoom > 0)
+        zoom_in(matrix, rows, columns, zoom);
+    else
+        zoom_out(matrix, rows, columns, zoom);
 }
