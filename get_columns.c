@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:26:52 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 12:03:58 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/26 17:42:31 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	get_columns(char *file)
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	columns = ft_count_words(line, ' ');
-	free (line);
+	free(line);
 	close(fd);
 	return (columns);
 }
