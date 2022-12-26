@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/12 00:29:06 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/26 12:04:01 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	get_rows(char *file)
 	while (line)
 	{
 		rows++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);

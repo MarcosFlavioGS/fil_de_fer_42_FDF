@@ -23,6 +23,14 @@ test: all
 	@make fclean
 	@clear
 	@./fdf maps/42.fdf
+leak:
+	@make -C libft/ all
+	@mv libft/libft.a libft.a
+	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(SRCS)
+	@gcc -o $(NAME) -g $(OBJS) $(LIBFT) -Lminilibx-linux -lmlx -lXext -lX11 -lm
+	@make fclean
+	@clear
+	@valgrind --leak-check=yes ./fdf maps/42.fdf
 clean:
 	@rm -rf $(OBJS)
 fclean: clean
