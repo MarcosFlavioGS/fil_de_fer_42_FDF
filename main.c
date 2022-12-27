@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 19:30:38 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/12/26 17:48:28 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/26 23:19:09 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ int	main(int argc, char **argv)
 	matrix = read_map(*++argv, rows, columns);
 	isometric(matrix, rows, columns);
 	put_pixel(matrix, rows, columns);
-	free(matrix);
 	return (0);
 }

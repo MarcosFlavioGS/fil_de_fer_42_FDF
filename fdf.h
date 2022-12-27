@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 01:10:13 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/26 22:50:58 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_read
 {
 	int		fd;
 	char	*line;
+	char	**split;
 	int		i;
 	int		j;
 	int		x;
