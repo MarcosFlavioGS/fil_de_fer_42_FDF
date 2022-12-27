@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/27 11:22:09 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/27 12:07:18 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,17 @@ t_dot	**read_map(char *file, int rows, int columns)
 	t_dot	**map;
 	
 	map = allocation(rows, columns);
-  	if (rows > 100 || columns > 100)
+  	if ((rows > 100 && rows < 300) || (columns > 100 && columns < 300))
 		reader(file, map, rows, columns, 6);
+	else if (rows > 300 || columns > 300)
+	{
+		reader(file, map, rows, columns, 10);
+		move_map_to_right(map, rows, columns, 10);
+	}
 	else
+	{
 		reader(file, map, rows, columns, 20);
+		move_map_to_right(map, rows, columns, 20);
+	}
 	return (map);
 }

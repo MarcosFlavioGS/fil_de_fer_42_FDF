@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 22:50:58 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/27 12:01:19 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	isometric(t_dot **matrix, int rows, int columns);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		close_window(t_data *vars);
 void	mlx_set(t_data *vars);
+void	move_map_to_right(t_dot **matrix, int rows, int columns, int dist);
 #endif

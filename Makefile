@@ -10,7 +10,8 @@ SRCS = 	main.c 			\
 		isometric.c		\
 		pixel_aux.c		\
 		close_window.c	\
-		mlx_init.c
+		mlx_init.c		\
+		move_map.c				
 
 OBJS = ${SRCS:.c=.o}
 
