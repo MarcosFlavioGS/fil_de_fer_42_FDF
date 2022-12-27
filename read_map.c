@@ -63,7 +63,6 @@ t_dot	**read_map(char *file, int rows, int columns)
 {
 	t_dot	**map;
 
-	ft_printf("rows: %d, columns: %d \n", rows, columns);	
 	map = allocation(rows, columns);
 	if (!map)
 		return (NULL);
