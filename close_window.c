@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 02:02:36 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/27 17:09:35 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:41:54 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	close_window(t_data *vars)
 
 int	close_window_esc(int keycode, t_data *vars)
 {
-	if (keycode)
+	if (keycode == 53 || keycode == 65307)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);

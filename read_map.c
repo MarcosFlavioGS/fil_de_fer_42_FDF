@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/27 12:43:56 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:35:44 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,25 @@ t_dot	**allocation(int rows, int columns)
 		map[i] = (t_dot *)malloc(sizeof(t_dot) * columns);
 		i++;
 	}
+	if (!map)
+		return (NULL);
 	return (map);
 }
 
 t_dot	**read_map(char *file, int rows, int columns)
 {
 	t_dot	**map;
-	
+
+	ft_printf("rows: %d, columns: %d \n", rows, columns);	
 	map = allocation(rows, columns);
-  	if ((rows > 100 && rows < 300) || (columns > 100 && columns < 300))
+	if (!map)
+		return (NULL);
+	if ((rows > 30 && rows < 100) || (columns > 30 && columns < 100))
+	{
+		reader(file, map, rows, columns, 15);
+		move_map_to_right(map, rows, columns, 20);
+	}
+  	else if ((rows > 100 && rows < 300) || (columns > 100 && columns < 300))
 	{
 		reader(file, map, rows, columns, 6);
 		move_map_to_right(map, rows, columns, 10);
@@ -74,5 +84,7 @@ t_dot	**read_map(char *file, int rows, int columns)
 	}
 	else
 		reader(file, map, rows, columns, 20);
+	if (!map)
+		return (NULL);
 	return (map);
 }
