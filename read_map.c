@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 23:19:12 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/27 11:22:09 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,21 @@ static void	reader(char *file, t_dot **map,int rows, int columns, int dist)
 	
 	read.fd = open(file, O_RDONLY);
 	read.i = 0;
-	read.x = 80;
+	read.x = 70;
 	while (read.i < rows)
 	{
 		read.line = get_next_line(read.fd);
 		read.j = 0;
-		read.y = 50;
 		read.split = ft_split(read.line, ' ');
 		free(read.line);
+		read.y = 50;
 		while (read.j < columns)
 		{
 			map[read.i][read.j].value = ft_atoi(read.split[read.j]);
 			free(read.split[read.j]);
 			map[read.i][read.j].x = read.y += dist;
-			map[read.i][read.j++].y = read.x;
+			map[read.i][read.j].y = read.x;
+			read.j++;
 		}
 		read.i++;
 		read.x += dist;
