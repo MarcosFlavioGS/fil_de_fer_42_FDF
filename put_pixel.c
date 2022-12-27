@@ -98,6 +98,6 @@ void	put_pixel(t_data data, t_dot **matrix, int rows, int columns)
 {
 	int		color;
 
-	color = 0x00FFFFFF;
+	color = 0x00FF00;
 	draw_line(matrix, rows, columns, &data, color);
 }

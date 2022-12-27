@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 02:02:36 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 01:02:50 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:09:35 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,14 @@ int	close_window(t_data *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	exit(0);
+}
+
+int	close_window_esc(int keycode, t_data *vars)
+{
+	if (keycode)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		exit(0);
+	}
+	return (0);
 }
