@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/27 12:01:19 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/27 12:29:24 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <stdlib.h>
 # include <math.h>
 
+typedef struct s_dots
+{
+	int	value;
+	int	x;
+	int	y;
+}	t_dot;
+
 typedef struct s_data
 {
 	void	*mlx;
@@ -29,13 +36,6 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }	t_data;
-
-typedef struct s_dots
-{
-	int	value;
-	int	x;
-	int	y;
-}	t_dot;
 
 typedef struct s_params
 {
@@ -66,7 +66,7 @@ typedef struct s_read
 	int		y;
 }	t_read;
 
-void	put_pixel(t_dot **matrix, int rows, int columns);
+void	put_pixel(t_data data, t_dot **matrix, int rows, int columns);
 t_dot	**read_map(char *file, int rows, int columns);
 int		get_rows(char *file);
 int		get_columns(char *file);
