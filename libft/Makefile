@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+         #
+#    By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 00:19:23 by mflavio-          #+#    #+#              #
-#    Updated: 2022/09/27 00:19:26 by mflavio-         ###   ########.fr        #
+#    Updated: 2022/12/28 13:22:15 by mflavio          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,10 @@ SRCS = ft_atoi.c		\
 	   ft_strtrim.c    	\
 	   ft_substr.c     	\
 	   ft_tolower.c    	\
-	   ft_toupper.c			\
-		 ft_numlen.c 			\
-		 get_next_line.c 	\
-		 ft_printf.c
+	   ft_toupper.c		\
+	   ft_numlen.c 		\
+	   get_next_line.c	\
+	   ft_printf.c
 
 BONUS = ft_lstnew.c		  \
 		ft_lstsize.c	  \

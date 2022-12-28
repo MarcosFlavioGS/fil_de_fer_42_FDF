@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/27 17:35:44 by mflavio          ###   ########.fr       */
+/*   Updated: 2022/12/28 14:11:15 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,27 +63,26 @@ t_dot	**read_map(char *file, int rows, int columns)
 {
 	t_dot	**map;
 
+	ft_printf("rows: %d, columns: %d\n", rows, columns);
 	map = allocation(rows, columns);
 	if (!map)
 		return (NULL);
-	if ((rows > 30 && rows < 100) || (columns > 30 && columns < 100))
+	if (rows < 30 || columns < 30)
+		reader(file, map, rows, columns, 30);
+	else if ((rows > 30 && rows < 100) || (columns > 30 && columns < 100))
 	{
 		reader(file, map, rows, columns, 15);
-		move_map_to_right(map, rows, columns, 20);
+		move_to_center(map, rows, columns, 20);
 	}
   	else if ((rows > 100 && rows < 300) || (columns > 100 && columns < 300))
 	{
-		reader(file, map, rows, columns, 6);
-		move_map_to_right(map, rows, columns, 10);
+		reader(file, map, rows, columns, 7);
+		move_to_center(map, rows, columns, 50);
 	}
 	else if (rows > 300 || columns > 300)
 	{
 		reader(file, map, rows, columns, 2);
-		move_map_to_right(map, rows, columns, 100);
+		move_to_center(map, rows, columns, 150);
 	}
-	else
-		reader(file, map, rows, columns, 20);
-	if (!map)
-		return (NULL);
 	return (map);
 }

@@ -17,7 +17,7 @@ OBJS = ${SRCS:.c=.o}
 
 all:
 	@make -C libft/ all
-	@mv libft/libft.a libft.a
+	@cp libft/libft.a libft.a
 	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(SRCS)
 	@gcc -o $(NAME) $(OBJS) $(LIBFT) -Lminilibx-linux -lmlx -lXext -lX11 -lm 
 test: all
@@ -34,6 +34,7 @@ leak:
 	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=no --track-origins=yes ./fdf maps/42.fdf
 clean:
 	@rm -rf $(OBJS)
+	@make -C libft/ clean
 fclean: clean
 	@rm -f $(LIBFT)
 	@make -C libft/ fclean
