@@ -63,7 +63,6 @@ t_dot	**read_map(char *file, int rows, int columns)
 {
 	t_dot	**map;
 
-	ft_printf("rows: %d, columns: %d\n", rows, columns);
 	map = allocation(rows, columns);
 	if (!map)
 		return (NULL);
@@ -74,7 +73,7 @@ t_dot	**read_map(char *file, int rows, int columns)
 		reader(file, map, rows, columns, 15);
 		move_to_center(map, rows, columns, 20);
 	}
-  	else if ((rows > 100 && rows < 300) || (columns > 100 && columns < 300))
+  else if ((rows > 100 && rows < 300) || (columns > 100 && columns < 300))
 	{
 		reader(file, map, rows, columns, 7);
 		move_to_center(map, rows, columns, 50);
