@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio- <mfghost69@gmail.com>             +#+  +:+       +#+        */
+/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 00:17:03 by mflavio-          #+#    #+#             */
-/*   Updated: 2022/09/27 00:17:05 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:38:51 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putstr_fd(char *s, int fd)
 {
-  int	i;
+	int	i;
 
 	i = 0;
 	if (s == NULL || !fd)
