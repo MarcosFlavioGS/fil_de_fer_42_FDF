@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/28 14:11:07 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/03 15:09:55 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ typedef struct s_params
 	int	sy;
 	int	err;
 	int	e2;
+	int	color;
+	int	rows;
+	int	columns;
 }	t_params;
 
 typedef struct s_read
@@ -64,6 +67,9 @@ typedef struct s_read
 	int		j;
 	int		x;
 	int		y;
+	int		rows;
+	int		columns;
+	t_dot	**map;
 }	t_read;
 
 void	put_pixel(t_data data, t_dot **matrix, int rows, int columns);

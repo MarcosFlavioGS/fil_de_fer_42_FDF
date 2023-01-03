@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_lines.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:39 by mflavio           #+#    #+#             */
-/*   Updated: 2022/12/26 12:04:01 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/03 14:56:44 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_rows(char *file)
 	int		fd;
 	char	*line;
 	int		rows;
-	
+
 	fd = open(file, O_RDONLY);
 	rows = 0;
 	line = get_next_line(fd);
