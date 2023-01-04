@@ -41,6 +41,3 @@ fclean: clean
 	@make -C libft/ fclean
 
 re: fclean all
-
-push:
-	@./script_git.sh
