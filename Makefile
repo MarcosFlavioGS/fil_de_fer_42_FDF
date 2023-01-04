@@ -11,7 +11,8 @@ SRCS = 	main.c 			\
 		pixel_aux.c		\
 		close_window.c	\
 		mlx_init.c		\
-		move_map.c				
+		move_map.c		\
+		ft_error.c		
 
 OBJS = ${SRCS:.c=.o}
 

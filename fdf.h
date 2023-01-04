@@ -6,7 +6,7 @@
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/03 15:09:55 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:13:43 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
+# include <stdio.h>
 
 typedef struct s_dots
 {
@@ -35,6 +36,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	t_dot	**matrix;
 }	t_data;
 
 typedef struct s_params
@@ -82,4 +84,5 @@ int		close_window(t_data *vars);
 void	mlx_set(t_data *vars);
 void	move_to_center(t_dot **map, int rows, int columns, int dist);
 int		close_window_esc(int keycode, t_data *vars);
+void	ft_error(char *str);
 #endif

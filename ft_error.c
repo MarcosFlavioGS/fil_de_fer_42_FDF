@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/25 02:02:36 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/04 16:55:01 by mflavio-         ###   ########.fr       */
+/*   Created: 2023/01/04 17:09:53 by mflavio-          #+#    #+#             */
+/*   Updated: 2023/01/04 17:14:42 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	close_window(t_data *vars)
+void	ft_error(char *str)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	free (vars->matrix);
-	exit(0);
-}
-
-int	close_window_esc(int keycode, t_data *vars)
-{
-	if (keycode == 53 || keycode == 65307)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		free (vars->matrix);
-		exit(0);
-	}
-	return (0);
+	ft_printf("%s", str);
+	exit(1);
 }
