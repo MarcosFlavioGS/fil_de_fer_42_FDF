@@ -6,7 +6,7 @@
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/04 17:13:43 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:53:50 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 	t_dot	**matrix;
+	int		rows;
+	int		columns;
 }	t_data;
 
 typedef struct s_params
