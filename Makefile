@@ -28,7 +28,7 @@ test: all
 leak:
 	@make -C libft/ all
 	@mv libft/libft.a libft.a
-	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(SRCS)
+	@gcc -Wall -Wextra -Werror -Iminilibx-linux -g3 -c $(SRCS)
 	@gcc -o $(NAME) -g $(OBJS) $(LIBFT) -Lminilibx-linux -lmlx -lXext -lX11 -lm
 	@make fclean
 	@clear
