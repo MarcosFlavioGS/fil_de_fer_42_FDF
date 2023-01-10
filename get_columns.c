@@ -6,7 +6,7 @@
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:26:52 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/04 19:36:52 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:27:44 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_count_words(char *str, char c)
 		{
 			count++;
 			while (str[i] != c && str[i])
-			i++;
+				i++;
 		}
 		else
 			i++;
@@ -38,11 +38,15 @@ int	get_columns(char *file)
 	int		fd;
 	char	*line;
 	int		columns;
-	
+
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	columns = ft_count_words(line, ' ');
-	free(line);
+	while (line != NULL)
+	{
+		free (line);
+		line = get_next_line(fd);
+	}
 	close(fd);
 	return (columns);
 }

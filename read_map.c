@@ -70,7 +70,7 @@ t_dot	**read_map(char *file, int rows, int columns)
 		return (NULL);
 	if (rows >= 500 && columns >= 500)
 		reader(file, read.map, read, 1);
-	if (rows >= 300 && columns >= 300)
+	if (rows >= 300 || columns >= 300)
 		reader(file, read.map, read, 2);
 	else if (rows > 150 && columns > 150)
 		reader(file, read.map, read, 4);
