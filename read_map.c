@@ -6,7 +6,7 @@
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/03 19:04:33 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:13:03 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static void	reader(char *file, t_dot **map, t_read read, int dist)
 		read.x += dist;
 		free(read.split);
 	}
-	move_to_center(map, read.rows, read.columns, dist
-		*((read.rows + read.columns) / 25));
+	move_to_center(map, read.rows, read.columns, (read.rows + read.columns) / 4);
 	close(read.fd);
 }
 
