@@ -25,14 +25,14 @@ This program simply takes any *.fdf* file and reads it into a 2D matrix using *[
 
 The Isometric projection is made using a simple formula:
 ```c
-      x = (x - y) * cos(0.6);
+      			x = (x - y) * cos(0.6);
 			y = (x + y) * sin(0.5) - z;
 			x += 600;
 			y += 100;
 ```
 ## Lining
 
-To connect each *dot* with lines I used the [Bresenham Algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm)
+To connect each *dot* with lines I used the [Bresenham's Algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm)
 
 ## How to use it
 
