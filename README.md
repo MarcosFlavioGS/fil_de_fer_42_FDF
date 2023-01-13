@@ -21,6 +21,6 @@ This programing simply takes any .fdf file and reas it into a 2D matrix, then us
 
 To use the program, simply:
 
-´´´c
+```c
 ./fdf <yourfile.fdf>
-´´´
+```
