@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/04 18:53:50 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/18 00:10:11 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,12 @@ typedef struct s_read
 	int		columns;
 	t_dot	**map;
 }	t_read;
+
+struct reader_config {
+    int rows_min;
+    int columns_min;
+    int value;
+};
 
 void	put_pixel(t_data data, t_dot **matrix, int rows, int columns);
 t_dot	**read_map(char *file, int rows, int columns);
