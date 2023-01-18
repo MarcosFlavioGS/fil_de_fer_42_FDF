@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/10 19:17:09 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/18 00:10:33 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "libft/libft.h"
+
+static struct reader_config configs[] = {
+    {500, 500, 1},
+    {300, 300, 2},
+    {150, 150, 4},
+    {100, 100, 7},
+    {30, 30, 15},
+    {0, 0, 30}
+};
 
 static void	reader(char *file, t_dot **map, t_read read, int dist)
 {
@@ -61,24 +70,23 @@ t_dot	**allocation(int rows, int columns)
 
 t_dot	**read_map(char *file, int rows, int columns)
 {
-	t_read	read;
+	t_read				read;
+	long unsigned int	i;
 
 	read.rows = rows;
 	read.columns = columns;
 	read.map = allocation(read.rows, read.columns);
 	if (!read.map)
 		return (NULL);
-	if (rows >= 500 && columns >= 500)
-		reader(file, read.map, read, 1);
-	if (rows >= 300 || columns >= 300)
-		reader(file, read.map, read, 2);
-	else if (rows > 150 && columns > 150)
-		reader(file, read.map, read, 4);
-	else if (rows >= 100 || columns >= 100)
-		reader(file, read.map, read, 7);
-	else if (rows >= 30 || columns >= 30)
-		reader(file, read.map, read, 15);
-	else if (rows <= 30 && columns <= 30)
-		reader(file, read.map, read, 30);
+	i = 0;
+	while (i < sizeof(configs) / sizeof(configs[0]))
+	{
+        if (rows >= configs[i].rows_min && columns >= configs[i].columns_min)
+		{
+            reader(file, read.map, read, configs[i].value);
+            break;
+        }
+		i++;
+    }	
 	return (read.map);
 }
