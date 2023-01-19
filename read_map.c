@@ -6,20 +6,20 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/18 00:10:33 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/18 22:43:01 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "libft/libft.h"
 
-static struct reader_config configs[] = {
-    {500, 500, 1},
-    {300, 300, 2},
-    {150, 150, 4},
-    {100, 100, 7},
-    {30, 30, 15},
-    {0, 0, 30}
+static struct reader_config g_configs[] = {
+{500, 500, 1},
+{300, 300, 2},
+{150, 150, 4},
+{100, 100, 7},
+{30, 30, 15},
+{0, 0, 30}
 };
 
 static void	reader(char *file, t_dot **map, t_read read, int dist)
@@ -36,7 +36,7 @@ static void	reader(char *file, t_dot **map, t_read read, int dist)
 		read.y = 50;
 		while (read.j < read.columns)
 		{
-			map[read.i][read.j].value = ft_atoi(read.split[read.j]);
+			map[read.i][read.j].value = (ft_atoi(read.split[read.j]) * 2);
 			free(read.split[read.j]);
 			map[read.i][read.j].x = read.y;
 			map[read.i][read.j++].y = read.x;
@@ -79,11 +79,11 @@ t_dot	**read_map(char *file, int rows, int columns)
 	if (!read.map)
 		return (NULL);
 	i = 0;
-	while (i < sizeof(configs) / sizeof(configs[0]))
+	while (i < sizeof(g_configs) / sizeof(g_configs[0]))
 	{
-        if (rows >= configs[i].rows_min && columns >= configs[i].columns_min)
+        if (rows >= g_configs[i].rows_min && columns >= g_configs[i].columns_min)
 		{
-            reader(file, read.map, read, configs[i].value);
+            reader(file, read.map, read, g_configs[i].value);
             break;
         }
 		i++;
