@@ -36,7 +36,7 @@ static void	reader(char *file, t_dot **map, t_read read, int dist)
 		read.y = 50;
 		while (read.j < read.columns)
 		{
-			map[read.i][read.j].value = (ft_atoi(read.split[read.j]) * 2);
+			map[read.i][read.j].value = (ft_atoi(read.split[read.j]) * 1);
 			free(read.split[read.j]);
 			map[read.i][read.j].x = read.y;
 			map[read.i][read.j++].y = read.x;
