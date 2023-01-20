@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/18 22:43:01 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/20 00:56:07 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft/libft.h"
 
 static struct reader_config g_configs[] = {
+{1000, 1000, 0.5},
 {500, 500, 1},
 {300, 300, 2},
 {150, 150, 4},
@@ -22,7 +23,7 @@ static struct reader_config g_configs[] = {
 {0, 0, 30}
 };
 
-static void	reader(char *file, t_dot **map, t_read read, int dist)
+static void	reader(char *file, t_dot **map, t_read read, float dist)
 {
 	read.fd = open(file, O_RDONLY);
 	read.i = 0;
@@ -36,7 +37,7 @@ static void	reader(char *file, t_dot **map, t_read read, int dist)
 		read.y = 50;
 		while (read.j < read.columns)
 		{
-			map[read.i][read.j].value = (ft_atoi(read.split[read.j]) * 1);
+			map[read.i][read.j].value = ft_atoi(read.split[read.j]);
 			free(read.split[read.j]);
 			map[read.i][read.j].x = read.y;
 			map[read.i][read.j++].y = read.x;

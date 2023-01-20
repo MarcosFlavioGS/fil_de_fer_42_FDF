@@ -6,7 +6,7 @@
 /*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/18 22:43:11 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/20 00:52:38 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ typedef struct s_read
 	char	**split;
 	int		i;
 	int		j;
-	int		x;
-	int		y;
+	float	x;
+	float	y;
 	int		rows;
 	int		columns;
 	t_dot	**map;

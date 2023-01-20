@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/03 15:24:19 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/01/20 00:55:33 by mflavio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	put_pixel(t_data data, t_dot **matrix, int rows, int columns)
 {
 	t_params	p;
 
-	p.color = 0x00FF00;
+	p.color = 0x00FFFFFF;
 	p.rows = rows;
 	p.columns = columns;
 	p.i = 0;
