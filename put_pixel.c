@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/20 00:55:33 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:43:06 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	setter(t_params *p, t_dot **matrix, int i, int j)
 	p->dy = abs(p->y2 - p->y1);
 }
 
-void	liner(t_params p, t_data *img)
+void	liner(t_params p, t_data *img, int color)
 {
 	while (1)
 	{
-		my_mlx_pixel_put(img, p.x1, p.y1, p.color);
+		my_mlx_pixel_put(img, p.x1, p.y1, color);
 		if (p.x1 == p.x2 && p.y1 == p.y2)
 			break ;
 		p.e2 = p.err;
@@ -65,13 +65,13 @@ void	checker(t_params p, t_dot **matrix, t_data *img)
 	{
 		setter(&p, matrix, p.i, p.j + 1);
 		conditioner(&p);
-		liner(p, img);
+		liner(p, img, matrix[p.i][p.j].color);
 	}
 	if (p.i + 1 < p.rows)
 	{
 		setter(&p, matrix, p.i + 1, p.j);
 		conditioner(&p);
-		liner(p, img);
+		liner(p, img, matrix[p.i][p.j].color);
 	}
 }
 
@@ -79,7 +79,6 @@ void	put_pixel(t_data data, t_dot **matrix, int rows, int columns)
 {
 	t_params	p;
 
-	p.color = 0x00FFFFFF;
 	p.rows = rows;
 	p.columns = columns;
 	p.i = 0;

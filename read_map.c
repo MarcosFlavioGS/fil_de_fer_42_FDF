@@ -3,53 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/20 00:56:07 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:39:07 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "libft/libft.h"
 
-static struct reader_config g_configs[] = {
-{1000, 1000, 0.5},
-{500, 500, 1},
-{300, 300, 2},
-{150, 150, 4},
-{100, 100, 7},
-{30, 30, 15},
-{0, 0, 30}
-};
-
-static void	reader(char *file, t_dot **map, t_read read, float dist)
+static int	base(char *str, int base)
 {
-	read.fd = open(file, O_RDONLY);
-	read.i = 0;
-	read.x = 70;
-	while (read.i < read.rows)
+	int		i;
+	int		nbr;
+	int		sign;
+
+	i = 0;
+	nbr = 0;
+	sign = 1;
+	if (str[i] == '-')
 	{
-		read.line = get_next_line(read.fd);
-		read.j = 0;
-		read.split = ft_split(read.line, ' ');
-		free(read.line);
-		read.y = 50;
-		while (read.j < read.columns)
-		{
-			map[read.i][read.j].value = ft_atoi(read.split[read.j]);
-			free(read.split[read.j]);
-			map[read.i][read.j].x = read.y;
-			map[read.i][read.j++].y = read.x;
-			read.y += dist;
-		}
-		read.i++;
-		read.x += dist;
-		free(read.split);
+		sign = -1;
+		i++;
 	}
-	move_to_center(map, read.rows, read.columns, (read.rows + read.columns)
-		/ 4);
-	close(read.fd);
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			nbr = nbr * base + str[i] - '0';
+		else if (str[i] >= 'A' && str[i] <= 'F')
+			nbr = nbr * base + str[i] - 'A' + 10;
+		else if (str[i] >= 'a' && str[i] <= 'f')
+			nbr = nbr * base + str[i] - 'a' + 10;
+		i++;
+	}
+	return (nbr * sign);
+}
+
+static void	set(t_dot *map, int value, int color, t_read *r)
+{
+	map->value = value * 2;
+	map->color = color;
+	map->x = r->y;
+	map->y = r->x;
+	free (r->split[r->j]);
+	if (r->hex[1])
+		free (r->hex[1]);
+	free (r->hex[0]);
+	free (r->hex);
+	r->j++;
+}
+
+static void	reader(char *file, t_dot **map, t_read r, float dist)
+{
+	r.fd = open(file, O_RDONLY);
+	r.i = 0;
+	r.x = 0;
+	while (r.i < r.rows)
+	{
+		r.line = get_next_line(r.fd);
+		r.j = 0;
+		r.split = ft_split(r.line, ' ');
+		free(r.line);
+		r.y = 0;
+		while (r.j < r.columns)
+		{
+			r.hex = ft_split(r.split[r.j], ',');
+			if (r.hex[1])
+				set(&map[r.i][r.j], ft_atoi(r.hex[0]), base(r.hex[1], 16), &r);
+			else
+				set(&map[r.i][r.j], ft_atoi(r.split[r.j]), 0xFFFFFF, &r);
+			r.y += dist;
+		}
+		r.i++;
+		r.x += dist;
+		free(r.split);
+	}
+	close(r.fd);
 }
 
 t_dot	**allocation(int rows, int columns)
@@ -58,10 +88,14 @@ t_dot	**allocation(int rows, int columns)
 	t_dot	**map;
 
 	map = (t_dot **)malloc(sizeof(t_dot *) * rows);
+	if (!map)
+		return (NULL);
 	i = 0;
 	while (i < rows)
 	{
 		map[i] = (t_dot *)malloc(sizeof(t_dot) * columns);
+		if (!map[i])
+			return (NULL);
 		i++;
 	}
 	if (!map)
@@ -80,14 +114,20 @@ t_dot	**read_map(char *file, int rows, int columns)
 	if (!read.map)
 		return (NULL);
 	i = 0;
-	while (i < sizeof(g_configs) / sizeof(g_configs[0]))
-	{
-        if (rows >= g_configs[i].rows_min && columns >= g_configs[i].columns_min)
-		{
-            reader(file, read.map, read, g_configs[i].value);
-            break;
-        }
-		i++;
-    }	
+	if (rows >= 1000 || columns >= 1000)
+		reader(file, read.map, read, 0.5);
+	else if (rows >= 500 || columns >= 500)
+		reader(file, read.map, read, 1);
+	else if (rows >= 300 || columns >= 300)
+		reader(file, read.map, read, 2);
+	else if (rows > 150 && columns > 150)
+		reader(file, read.map, read, 4);
+	else if (rows >= 100 || columns >= 100)
+		reader(file, read.map, read, 7);
+	else if (rows >= 30 || columns >= 30)
+		reader(file, read.map, read, 15);
+	else if (rows <= 30 && columns <= 30)
+		reader(file, read.map, read, 30);
+	move_to_center(read.map, rows, columns, (rows + columns) / 4);
 	return (read.map);
 }

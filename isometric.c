@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isometric.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 00:15:18 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/20 00:56:10 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:50:49 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	isometric(t_dot **matrix, int rows, int columns)
 			matrix[i][j].y = (matrix[i][j].x + matrix[i][j].y) * sin(0.5)
 				- matrix[i][j].value;
 			matrix[i][j].x += 600;
-			matrix[i][j].y += 100;
+			matrix[i][j].y += 300;
 			j++;
 		}
 		i++;

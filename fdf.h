@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mflavio <mflavio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/20 00:52:38 by mflavio          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:49:28 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 
 # include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
+# include "../fdf/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
@@ -25,6 +25,7 @@ typedef struct s_dots
 	int	value;
 	int	x;
 	int	y;
+	int color;
 }	t_dot;
 
 typedef struct s_data
@@ -57,7 +58,6 @@ typedef struct s_params
 	int	sy;
 	int	err;
 	int	e2;
-	int	color;
 	int	rows;
 	int	columns;
 }	t_params;
@@ -67,6 +67,7 @@ typedef struct s_read
 	int		fd;
 	char	*line;
 	char	**split;
+	char	**hex;
 	int		i;
 	int		j;
 	float	x;
@@ -75,12 +76,6 @@ typedef struct s_read
 	int		columns;
 	t_dot	**map;
 }	t_read;
-
-struct reader_config {
-    int rows_min;
-    int columns_min;
-    int value;
-};
 
 void	put_pixel(t_data data, t_dot **matrix, int rows, int columns);
 t_dot	**read_map(char *file, int rows, int columns);
