@@ -106,14 +106,12 @@ t_dot	**allocation(int rows, int columns)
 t_dot	**read_map(char *file, int rows, int columns)
 {
 	t_read				read;
-	long unsigned int	i;
 
 	read.rows = rows;
 	read.columns = columns;
 	read.map = allocation(read.rows, read.columns);
 	if (!read.map)
 		return (NULL);
-	i = 0;
 	if (rows >= 1000 || columns >= 1000)
 		reader(file, read.map, read, 0.5);
 	else if (rows >= 500 || columns >= 500)
