@@ -47,6 +47,9 @@ The Isometric projection is made using a simple formula:
 			x += width;
 			y += height;
 ```
+
+<p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/Capturar.PNG">
+
 ## Lining
 
 To connect each *dot* with lines I used the [Bresenham's Algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm)
