@@ -18,7 +18,23 @@ This project is made using [Libft](https://github.com/MarcosFlavioGS/Libft). Lib
 
 ## How does it work ?
 
-This program simply takes any *.fdf* file and reads it into a 2D matrix using *[get_next_line](https://github.com/MarcosFlavioGS/Get_next_line_42)*, then uses it to print pixels on the screen in isometric projection format. A *.fdf* file is a text file with numbers, each number represents a point in space, with *X* and *Y* positions determined by the position on the file and its hight, represented by the value.
+This program simply takes any *.fdf* file and reads it into a 2D matrix using *[get_next_line](https://github.com/MarcosFlavioGS/Get_next_line_42)*, then uses it to print pixels on the screen in isometric projection format.
+
+A *.fdf* file is a text file with numbers, each number represents a point in space, with *X* and *Y* positions determined by the position on the file and its hight, represented by the value.
+
+```txt
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0 30 30  0  0 30 30  0  0  0 30 30 30 30 30  0  0  0
+0  0 30 30  0  0 30 30  0  0  0  0  0  0  0 30 30  0  0
+0  0 30 30  0  0 30 30  0  0  0  0  0  0  0 30 30  0  0
+0  0 30 30 30 30 30 30  0  0  0  0 30 30 30 30  0  0  0
+0  0  0 30 30 30 30 30  0  0  0 30 30  0  0  0  0  0  0
+0  0  0  0  0  0 30 30  0  0  0 30 30  0  0  0  0  0  0
+0  0  0  0  0  0 30 30  0  0  0 30 30 30 30 30 30  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+```
 
 ## Projection
 
