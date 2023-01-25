@@ -51,6 +51,8 @@ Maps can also contain hexadecimal values representing colors. These values must 
 ```
 *t1.fdf*
 <p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/t1.PNG">
+*t2.fdf*
+<p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/t2.PNG">
 
 ## Projection
 
