@@ -2,6 +2,8 @@
 
 <p align="center"><a href="https://www.42sp.org.br/" target="_blank"><img src="https://img.shields.io/static/v1?label=&message=SP&color=000&style=for-the-badge&logo=42""></a></p>
 <p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/fdfn.png">
+	
+<p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/Capturar.PNG">
 
 ## This project is about representing a landscape as a 3D object in which all surfaces are outlined in lines.
 
@@ -51,7 +53,8 @@ The Isometric projection is made using a simple formula:
 			y += height;
 ```
 
-<p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/Capturar.PNG">
+*mars.fdf*
+<p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/Marswhite.PNG">
 
 ## Lining
 
