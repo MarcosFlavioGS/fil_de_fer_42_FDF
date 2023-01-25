@@ -28,7 +28,6 @@ This program simply takes any *.fdf* file and reads it into a 2D matrix using *[
 A *.fdf* file is a text file with numbers, each number represents a point in space, with *X* and *Y* positions determined by the position on the file and its hight, represented by the value:
 
 *42.fdf*
-
 ```txt
 		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
@@ -42,6 +41,16 @@ A *.fdf* file is a text file with numbers, each number represents a point in spa
 		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 ```
+
+Maps can also contain hexadecimal values representing colors. These values must be separated from the height values only by a comma:
+
+```txt
+	 1,0xff 1,0xff 2,0xff 1,0xff 3,0xff 9,0xff00 9,0xff00
+	 0,0xff 1,0xff 1,0xff 7,0xff00 7,0xff00 5,0xff00 10,0xff00
+	 0,0xff 0,0xff 0,0xff 6,0xff00 5,0xff00 9,0xff00 9,0xff00
+```
+*t1.fdf*
+<p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/t1.PNG">
 
 ## Projection
 
