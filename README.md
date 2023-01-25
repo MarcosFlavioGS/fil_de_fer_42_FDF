@@ -20,20 +20,22 @@ This project is made using [Libft](https://github.com/MarcosFlavioGS/Libft). Lib
 
 This program simply takes any *.fdf* file and reads it into a 2D matrix using *[get_next_line](https://github.com/MarcosFlavioGS/Get_next_line_42)*, then uses it to print pixels on the screen in isometric projection format.
 
-A *.fdf* file is a text file with numbers, each number represents a point in space, with *X* and *Y* positions determined by the position on the file and its hight, represented by the value.
+A *.fdf* file is a text file with numbers, each number represents a point in space, with *X* and *Y* positions determined by the position on the file and its hight, represented by the value:
+
+*42.fdf*
 
 ```txt
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0 30 30  0  0 30 30  0  0  0 30 30 30 30 30  0  0  0
-0  0 30 30  0  0 30 30  0  0  0  0  0  0  0 30 30  0  0
-0  0 30 30  0  0 30 30  0  0  0  0  0  0  0 30 30  0  0
-0  0 30 30 30 30 30 30  0  0  0  0 30 30 30 30  0  0  0
-0  0  0 30 30 30 30 30  0  0  0 30 30  0  0  0  0  0  0
-0  0  0  0  0  0 30 30  0  0  0 30 30  0  0  0  0  0  0
-0  0  0  0  0  0 30 30  0  0  0 30 30 30 30 30 30  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+		0  0 30 30  0  0 30 30  0  0  0 30 30 30 30 30  0  0  0
+		0  0 30 30  0  0 30 30  0  0  0  0  0  0  0 30 30  0  0
+		0  0 30 30  0  0 30 30  0  0  0  0  0  0  0 30 30  0  0
+		0  0 30 30 30 30 30 30  0  0  0  0 30 30 30 30  0  0  0
+		0  0  0 30 30 30 30 30  0  0  0 30 30  0  0  0  0  0  0
+		0  0  0  0  0  0 30 30  0  0  0 30 30  0  0  0  0  0  0
+		0  0  0  0  0  0 30 30  0  0  0 30 30 30 30 30 30  0  0
+		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+		0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
 ```
 
 ## Projection
@@ -42,8 +44,8 @@ The Isometric projection is made using a simple formula:
 ```c
       			x = (x - y) * cos(0.6);
 			y = (x + y) * sin(0.5) - z;
-			x += 600;
-			y += 100;
+			x += width;
+			y += height;
 ```
 ## Lining
 
@@ -53,6 +55,6 @@ To connect each *dot* with lines I used the [Bresenham's Algorithm](https://en.w
 
 To use the program, simply:
 
-```c
+```sh
 ./fdf <yourfile.fdf>
 ```
