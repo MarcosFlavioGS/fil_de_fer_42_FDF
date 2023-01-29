@@ -9,7 +9,7 @@
 
 ###
 
-This is th fifth project in 42 curriculumn. The goal is to code a 3D wireframe projection of a landscape using thw school's internal libray [MinilibX](https://github.com/42Paris/minilibx-linux). This library is made for window management in C, so that it is possible to print pixels directly on a window.
+This is the fifth project in 42 curriculumn. The goal is to code a 3D wireframe projection of a landscape using thw school's internal libray [MinilibX](https://github.com/42Paris/minilibx-linux). This library is made for window management in C, so that it is possible to print pixels directly on a window.
 
 # The Norm
 
@@ -61,8 +61,6 @@ The Isometric projection is made using a simple formula:
 ```c
       			x = (x - y) * cos(0.6);
 			y = (x + y) * sin(0.5) - z;
-			x += width;
-			y += height;
 ```
 
 *mars.fdf*
