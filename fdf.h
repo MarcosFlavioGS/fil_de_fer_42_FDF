@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 00:27:27 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/20 19:49:28 by mflavio-         ###   ########.fr       */
+/*   Created: 2022/12/12 00:27:27 by mflavio-          #+#    #+#             */
+/*   Updated: 2023/02/02 20:07:22 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,28 @@
 # define FDF_H
 
 # include "libft/libft.h"
-# include "../fdf/minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
-# include <stdio.h>
+
+typedef struct s_enum
+{
+	float	case_1;
+	float	case_2;
+	float	case_3;
+	float	case_4;
+	float	case_5;
+	float	case_6;
+	float	case_7;
+}	t_enum;
 
 typedef struct s_dots
 {
 	int	value;
 	int	x;
 	int	y;
-	int color;
+	int	color;
 }	t_dot;
 
 typedef struct s_data
@@ -78,7 +88,7 @@ typedef struct s_read
 }	t_read;
 
 void	put_pixel(t_data data, t_dot **matrix, int rows, int columns);
-t_dot	**read_map(char *file, int rows, int columns);
+t_dot	**read_map(char *file, int rows, int columns, t_enum dst);
 int		get_rows(char *file);
 int		get_columns(char *file);
 void	isometric(t_dot **matrix, int rows, int columns);
@@ -88,4 +98,5 @@ void	mlx_set(t_data *vars);
 void	move_to_center(t_dot **map, int rows, int columns, int dist);
 int		close_window_esc(int keycode, t_data *vars);
 void	ft_error(char *str);
+int		check_file_extension(char *file);
 #endif
