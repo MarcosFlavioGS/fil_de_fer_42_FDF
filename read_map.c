@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 00:31:54 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/20 19:39:07 by mflavio-         ###   ########.fr       */
+/*   Created: 2022/12/12 00:31:54 by mflavio-          #+#    #+#             */
+/*   Updated: 2023/02/02 19:16:42 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	base(char *str, int base)
 
 static void	set(t_dot *map, int value, int color, t_read *r)
 {
-	map->value = value * 2;
+	map->value = value;
 	map->color = color;
 	map->x = r->y;
 	map->y = r->x;
@@ -103,9 +103,9 @@ t_dot	**allocation(int rows, int columns)
 	return (map);
 }
 
-t_dot	**read_map(char *file, int rows, int columns)
+t_dot	**read_map(char *file, int rows, int columns, t_enum dst)
 {
-	t_read				read;
+	t_read	read;
 
 	read.rows = rows;
 	read.columns = columns;
@@ -113,19 +113,19 @@ t_dot	**read_map(char *file, int rows, int columns)
 	if (!read.map)
 		return (NULL);
 	if (rows >= 1000 || columns >= 1000)
-		reader(file, read.map, read, 0.5);
+		reader(file, read.map, read, dst.case_1);
 	else if (rows >= 500 || columns >= 500)
-		reader(file, read.map, read, 1);
+		reader(file, read.map, read, dst.case_2);
 	else if (rows >= 300 || columns >= 300)
-		reader(file, read.map, read, 2);
+		reader(file, read.map, read, dst.case_3);
 	else if (rows > 150 && columns > 150)
-		reader(file, read.map, read, 4);
+		reader(file, read.map, read, dst.case_4);
 	else if (rows >= 100 || columns >= 100)
-		reader(file, read.map, read, 7);
+		reader(file, read.map, read, dst.case_5);
 	else if (rows >= 30 || columns >= 30)
-		reader(file, read.map, read, 15);
+		reader(file, read.map, read, dst.case_6);
 	else if (rows <= 30 && columns <= 30)
-		reader(file, read.map, read, 30);
+		reader(file, read.map, read, dst.case_7);
 	move_to_center(read.map, rows, columns, (rows + columns) / 4);
 	return (read.map);
 }
