@@ -26,7 +26,7 @@ void	parallel(t_dot **matrix, int rows, int columns)
 			matrix[i][j].x = matrix[i][j].x - matrix[i][j].value * sin(0.5);
 			matrix[i][j].y = matrix[i][j].y - matrix[i][j].value * cos(0.5);
 			matrix[i][j].x += 500;
-			matrix[i][j].y += 400;
+			matrix[i][j].y += 300;
 			j++;
 		}
 		i++;
