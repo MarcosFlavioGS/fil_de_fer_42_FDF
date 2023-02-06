@@ -6,7 +6,7 @@
 #    By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/20 19:52:55 by mflavio-          #+#    #+#              #
-#    Updated: 2023/02/02 20:06:05 by mflavio-         ###   ########.fr        #
+#    Updated: 2023/02/06 18:36:30 by mflavio-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,13 +96,16 @@ test: all
 	@sleep 1
 	@make fclean
 	@clear
-leak:
-	@make -C libft/ all
-	@gcc -Wall -Wextra -Werror -Iminilibx-linux -g3 -c $(SRCS)
-	@gcc -o $(NAME) -g $(OBJS) $(LIBFT) -Lminilibx-linux -lmlx -lXext -lX11 -lm
+leak: all
 	@make clean
 	@clear
+	@echo "Testing leaks for 42.fdf"
+	@sleep 2
 	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes ./fdf maps/42.fdf
+	@echo "\n\n\n********************************"
+	@echo "Checking leaks for t1.fdf"
+	@sleep 2
+	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes ./fdf maps/t1.fdf
 bonus:
 	@make -C libft/ all
 	@gcc -Wall -Wextra -Werror -Iminilibx-linux -c $(BSRCS)

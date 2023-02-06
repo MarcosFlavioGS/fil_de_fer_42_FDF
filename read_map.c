@@ -6,7 +6,7 @@
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio-          #+#    #+#             */
-/*   Updated: 2023/02/02 19:16:42 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/02/06 18:49:11 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,15 @@ static int	base(char *str, int base)
 
 static void	set(t_dot *map, int value, int color, t_read *r)
 {
-	map->value = value;
-	map->color = color;
 	map->x = r->y;
 	map->y = r->x;
+	map->value = value;
+	map->color = color;
 	free (r->split[r->j]);
 	if (r->hex[1])
 		free (r->hex[1]);
 	free (r->hex[0]);
 	free (r->hex);
-	r->j++;
 }
 
 static void	reader(char *file, t_dot **map, t_read r, float dist)
@@ -64,7 +63,6 @@ static void	reader(char *file, t_dot **map, t_read r, float dist)
 		r.line = get_next_line(r.fd);
 		r.j = 0;
 		r.split = ft_split(r.line, ' ');
-		free(r.line);
 		r.y = 0;
 		while (r.j < r.columns)
 		{
@@ -74,9 +72,11 @@ static void	reader(char *file, t_dot **map, t_read r, float dist)
 			else
 				set(&map[r.i][r.j], ft_atoi(r.split[r.j]), 0xFFFFFF, &r);
 			r.y += dist;
+			r.j++;
 		}
 		r.i++;
 		r.x += dist;
+		free (r.line);
 		free(r.split);
 	}
 	close(r.fd);

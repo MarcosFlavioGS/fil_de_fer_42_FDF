@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 00:31:39 by mflavio           #+#    #+#             */
-/*   Updated: 2023/01/20 19:43:06 by mflavio-         ###   ########.fr       */
+/*   Created: 2022/12/12 00:31:39 by mflavio-          #+#    #+#             */
+/*   Updated: 2023/02/06 18:46:42 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	liner(t_params p, t_data *img, int color)
 {
 	while (1)
 	{
-		my_mlx_pixel_put(img, p.x1, p.y1, color);
+		if (p.x1 >= 0 && p.x1 < 1920 && p.y1 >= 0 && p.y1 < 1080)
+			my_mlx_pixel_put(img, p.x1, p.y1, color);
 		if (p.x1 == p.x2 && p.y1 == p.y2)
 			break ;
 		p.e2 = p.err;
