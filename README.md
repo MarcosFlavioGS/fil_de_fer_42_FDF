@@ -76,13 +76,13 @@ The Parallel projection is made using a simple formula:
 			y = y - z * cos(0.5);
 ```
 
-*t1_parallel.fdf*
+*t1.fdf*
 <p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/t1_parallel.PNG">
 
-*t2_parallel.fdf*
+*t2.fdf*
 <p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/t2_parallel.PNG">
 
-*Mars_parallel.fdf*
+*Mars.fdf*
 <p align="center"><img src="https://github.com/MarcosFlavioGS/fil_de_fer_42_FDF/blob/master/github_imgs/Mars_parallel.PNG">
 
 ## Lining
