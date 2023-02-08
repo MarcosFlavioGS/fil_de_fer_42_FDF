@@ -6,7 +6,7 @@
 /*   By: mflavio- <mflavio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 00:31:54 by mflavio-          #+#    #+#             */
-/*   Updated: 2023/02/06 18:49:11 by mflavio-         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:28:28 by mflavio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	reader(char *file, t_dot **map, t_read r, float dist)
 			if (r.hex[1])
 				set(&map[r.i][r.j], ft_atoi(r.hex[0]), base(r.hex[1], 16), &r);
 			else
-				set(&map[r.i][r.j], ft_atoi(r.split[r.j]), 0xFFFFFF, &r);
+				set(&map[r.i][r.j], ft_atoi(r.split[r.j]) * dist, 0xFFFFFF, &r);
 			r.y += dist;
 			r.j++;
 		}
