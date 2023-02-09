@@ -68,9 +68,9 @@ static void	reader(char *file, t_dot **map, t_read r, float dist)
 		{
 			r.hex = ft_split(r.split[r.j], ',');
 			if (r.hex[1])
-				set(&map[r.i][r.j], ft_atoi(r.hex[0]), base(r.hex[1], 16), &r);
+				set(&map[r.i][r.j], ft_atoi(r.split[r.j]) * dist / 4, base(r.hex[1], 16), &r);
 			else
-				set(&map[r.i][r.j], ft_atoi(r.split[r.j]) * dist, 0xFFFFFF, &r);
+				set(&map[r.i][r.j], ft_atoi(r.split[r.j]) * dist / 4, 0xFFFFFF, &r);
 			r.y += dist;
 			r.j++;
 		}
